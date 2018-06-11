@@ -2,6 +2,17 @@
 PyUML2: A Pythonic Implementation of the UML Metamodel
 ======================================================
 
+|master-build| |coverage| |license|
+
+.. |master-build| image:: https://travis-ci.org/pyecore/pyuml2.svg?branch=master
+    :target: https://travis-ci.org/pyecore/pyuml2
+
+.. |coverage| image:: https://coveralls.io/repos/github/pyecore/pyuml2/badge.svg?branch=master
+    :target: https://coveralls.io/github/pyecore/pyuml2?branch=master
+
+.. |license| image:: https://img.shields.io/badge/license-New%20BSD-blue.svg
+    :target: https://raw.githubusercontent.com/pyecore/pyuml2/master/LICENSE
+
 PyUML2 is the implementation of the UML2 metamodel for Python 2.7, >=3.4,
 relying on PyEcore. The goal of this project is to provide an almost-full
 implementation of the UML-2.5 standard in Python with Profile supports and
@@ -69,7 +80,7 @@ Tests
 
 The project is configured to be used with ``tox``, so, you only need to run:
 
-.... code-block:: shell
+.. code-block:: shell
 
     $ tox
 
