@@ -10,6 +10,6 @@ install:
   - pip install --upgrade pytest pytest-cov coveralls
   - pip install -e .
 script:
-  - python setup.py test -a -v -a --cov=pyecoregen
+  - python -m pytest --cov=pyuml2
 after_success:
   - coveralls
