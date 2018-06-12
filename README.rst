@@ -62,6 +62,12 @@ On the roadmap:
 * Add default primitive type library
 * Derived features implementation
 * Profiles support
+** Open an existing Profile (currently, partially supported, some cross-refs are not resolved)
+** Create Metamodel References
+** Define a Profile (as it is done in Eclipse UML2)
+** Apply a Profile
+** Open a profiled Model
+** Apply a Stereotype
 
 Liberties Regarding the Eclipse implementation
 ==============================================
