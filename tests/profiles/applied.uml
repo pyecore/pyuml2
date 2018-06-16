@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:testProfile="myprofileURI" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="myprofileURI testProfile.profile.uml#_uEUhcDNiEei1Zri9xPBGPQ">
+  <uml:Model xmi:id="_vnw50DQVEei1Zri9xPBGPQ" name="sdf">
+    <packagedElement xmi:type="uml:Class" xmi:id="_u97dMDQWEei1Zri9xPBGPQ" name="myclass"/>
+    <profileApplication xmi:id="_KCxjkDQXEei1Zri9xPBGPQ">
+      <eAnnotations xmi:id="_KCzYwDQXEei1Zri9xPBGPQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="testProfile.profile.uml#_uEUhcDNiEei1Zri9xPBGPQ"/>
+      </eAnnotations>
+      <appliedProfile href="testProfile.profile.uml#_VjAu0DNiEei1Zri9xPBGPQ"/>
+    </profileApplication>
+  </uml:Model>
+  <testProfile:FirstStereotype xmi:id="_VQnVADQXEei1Zri9xPBGPQ" base_Class="_u97dMDQWEei1Zri9xPBGPQ"/>
+</xmi:XMI>

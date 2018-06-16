@@ -91,6 +91,12 @@ def test_class_superclass_derived():
 
     assert repr(c1.superClass)
 
+    assert len(c1.get_super_classes()) == 0
+
+    c1.get_super_classes().append(c2)
+    assert c2 in c1.get_super_classes()
+    assert c2 in c1.superClass
+
 
 def test_property_iscomposite():
     p = Property()

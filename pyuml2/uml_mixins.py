@@ -101,8 +101,14 @@ not allOwnedElements()->includes(self)"""
 
     def get_applied_stereotypes(self):
         """Retrieves the stereotypes that are applied to this element."""
-        raise NotImplementedError(
-            'operation get_applied_stereotypes(...) not yet implemented')
+        from .profile_utils import get_stereotype_from_application
+        result = set()
+        for o, r in self._inverse_rels:
+            if r.name.startswith('base_'):
+                stereotype = get_stereotype_from_application(o)
+                if stereotype:
+                    result.add(stereotype)
+        return tuple(result)
 
     def get_applied_substereotype(self, stereotype=None, qualifiedName=None):
         """Retrieves the substereotype of the specified stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is applied."""
@@ -161,8 +167,13 @@ not allOwnedElements()->includes(self)"""
 
     def get_stereotype_applications(self):
         """Retrieves the stereotype applications for this element."""
-        raise NotImplementedError(
-            'operation get_stereotype_applications(...) not yet implemented')
+        from .profile_utils import get_stereotype_from_application
+        result = set()
+        for o, r in self._inverse_rels:
+            if r.name.startswith('base_') and \
+                    get_stereotype_from_application(o):
+                result.add(o)
+        return tuple(result)
 
     def get_target_directed_relationships(self):
         """Retrieves the directed relationships for which this element is a target."""
@@ -3207,7 +3218,22 @@ class DerivedNestedpackage(EDerivedCollection):
 
 
 class DerivedOwnedstereotype(EDerivedCollection):
-    pass
+    def _get_collection(self):
+        from .uml import Stereotype
+        return [e for e in self.owner.packagedElement
+                if isinstance(e, Stereotype)]
+
+    def __contains__(self, x):
+        return x in self._get_collection()
+
+    def __len__(self):
+        return len(self._get_collection())
+
+    def __getitem__(self, index):
+        return self._get_collection()[index]
+
+    def __repr__(self):
+        return 'DerivedCollection({})'.format(self._get_collection())
 
 
 class DerivedOwnedtype(EDerivedCollection):
@@ -3370,8 +3396,7 @@ result = (packagedElement->select(oclIsKindOf(Package))->collect(oclAsType(Packa
         """Derivation for Package::/ownedStereotype
 result = (packagedElement->select(oclIsKindOf(Stereotype))->collect(oclAsType(Stereotype))->asSet())
 <p>From package UML::Packages.</p>"""
-        raise NotImplementedError(
-            'operation get_owned_stereotypes(...) not yet implemented')
+        return self.ownedStereotype
 
     def get_owned_types(self):
         """Derivation for Package::/ownedType
@@ -7003,9 +7028,12 @@ not isActive implies (ownedReception->isEmpty() and classifierBehavior = null)""
             'operation create_owned_operation(...) not yet implemented')
 
     def is_metaclass(self):
+        from .standard import Metaclass
         """Determines whether this class is a metaclass."""
-        raise NotImplementedError(
-            'operation is_metaclass(...) not yet implemented')
+        for o, r in self._inverse_rels:
+            if isinstance(o, Metaclass) and r.name == 'base_Class':
+                return True
+        return False
 
     def get_extensions(self):
         """Derivation for Class::/extension : Extension
@@ -7020,8 +7048,7 @@ result = (Extension.allInstances()->select(ext |
         """Derivation for Class::/superClass : Class
 result = (self.general()->select(oclIsKindOf(Class))->collect(oclAsType(Class))->asSet())
 <p>From package UML::StructuredClassifiers.</p>"""
-        raise NotImplementedError(
-            'operation get_super_classes(...) not yet implemented')
+        return self.superClass
 
 
 class BehaviorMixin(object):
