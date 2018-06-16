@@ -78,12 +78,52 @@ def test_element_get_appliedstereotype(rset):
     assert stereotype in c.get_applied_stereotypes()
 
 
+def test_element_get_appliedstereotype_deserialized_profile(rset):
+    profile_file = path.join('tests', 'profiles', 'testProfile.profile.uml')
+    profile_resource = rset.get_resource(profile_file)
+    profile = profile_resource.contents[0]
+
+    applied_file = path.join('tests', 'profiles', 'applied.uml')
+    applied_resource = rset.get_resource(applied_file)
+    applied_root = applied_resource.contents[0]
+
+    c = applied_root.packagedElement[0]
+    assert len(c.get_applied_stereotypes()) == 1
+
+    stereotype = profile.packagedElement[0]
+    assert stereotype in c.get_applied_stereotypes()
+
+
+def test_element_get_appliedstereotype_schema_location(rset):
+    applied_file = path.join('tests', 'profiles', 'applied.uml')
+    applied_resource = rset.get_resource(applied_file)
+    applied_root = applied_resource.contents[0]
+
+    c = applied_root.packagedElement[0]
+    assert len(c.get_applied_stereotypes()) == 1
+
+    assert c.get_applied_stereotypes()[0].name == "FirstStereotype"
+
+
 def test_element_get_stereotypeapplications(rset):
     profile_file = path.join('tests', 'profiles', 'testProfile.profile.uml')
     profile_resource = rset.get_resource(profile_file)
     profile = profile_resource.contents[0]
     static = profile.getEAnnotation(utils.UML_20_URI).contents[0]
     rset.metamodel_registry[static.nsURI] = static
+
+    applied_file = path.join('tests', 'profiles', 'applied.uml')
+    applied_resource = rset.get_resource(applied_file)
+    applied_root = applied_resource.contents[0]
+
+    c = applied_root.packagedElement[0]
+    assert len(c.get_stereotype_applications()) == 1
+    assert c.get_stereotype_applications()
+
+
+def test_element_get_stereotypeapplications_deserialized_profile(rset):
+    profile_file = path.join('tests', 'profiles', 'testProfile.profile.uml')
+    rset.get_resource(profile_file)
 
     applied_file = path.join('tests', 'profiles', 'applied.uml')
     applied_resource = rset.get_resource(applied_file)
