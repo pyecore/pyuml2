@@ -1,6 +1,6 @@
 import pytest
 from pyecore.ecore import BadValueError
-from pyuml2.uml import Class, Property, Package, AggregationKind
+from pyuml2.uml import Class, Property, Package, AggregationKind, Model
 
 
 def test_owner():
@@ -150,3 +150,25 @@ def test_package_nestingPackage():
 
     with pytest.raises(BadValueError):
         p1.nestingPackage = Class()
+
+
+def test_element_get_model():
+    m1, p1, c1 = Model(), Package(), Class()
+    p1.packagedElement.append(c1)
+    m1.packagedElement.append(p1)
+
+    assert c1.get_model() is m1
+    assert p1.get_model() is m1
+    assert m1.get_model() is None
+
+
+def test_element_get_nearesPackage():
+    m1, p1, c1, prop1 = Model(), Package(), Class(), Property()
+    c1.ownedAttribute.append(prop1)
+    p1.packagedElement.append(c1)
+    m1.packagedElement.append(p1)
+
+    assert prop1.get_nearest_package() is p1
+    assert c1.get_nearest_package() is p1
+    assert p1.get_nearest_package() is m1
+    assert m1.get_nearest_package() is None

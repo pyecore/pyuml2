@@ -60,7 +60,7 @@ def test_utils_get_stereotypefromapplication(rset):
     assert stereotype is profile.packagedElement[0]
 
 
-def test_element_get_appliedstereotype(rset):
+def test_element_get_appliedstereotypes(rset):
     profile_file = path.join('tests', 'profiles', 'testProfile.profile.uml')
     profile_resource = rset.get_resource(profile_file)
     profile = profile_resource.contents[0]
@@ -78,7 +78,7 @@ def test_element_get_appliedstereotype(rset):
     assert stereotype in c.get_applied_stereotypes()
 
 
-def test_element_get_appliedstereotype_deserialized_profile(rset):
+def test_element_get_appliedstereotypes_deserialized_profile(rset):
     profile_file = path.join('tests', 'profiles', 'testProfile.profile.uml')
     profile_resource = rset.get_resource(profile_file)
     profile = profile_resource.contents[0]
@@ -94,7 +94,7 @@ def test_element_get_appliedstereotype_deserialized_profile(rset):
     assert stereotype in c.get_applied_stereotypes()
 
 
-def test_element_get_appliedstereotype_schema_location(rset):
+def test_element_get_appliedstereotypes_schema_location(rset):
     applied_file = path.join('tests', 'profiles', 'applied.uml')
     applied_resource = rset.get_resource(applied_file)
     applied_root = applied_resource.contents[0]
@@ -102,7 +102,30 @@ def test_element_get_appliedstereotype_schema_location(rset):
     c = applied_root.packagedElement[0]
     assert len(c.get_applied_stereotypes()) == 1
 
-    assert c.get_applied_stereotypes()[0].name == "FirstStereotype"
+    stereotype = c.get_applied_stereotypes()[0]
+    assert stereotype.name == "FirstStereotype"
+    assert isinstance(stereotype, uml.Stereotype)
+    assert stereotype.qualifiedName == 'testProfile::FirstStereotype'
+
+    t_value = stereotype.ownedAttribute[1]
+    assert t_value.qualifiedName == 'testProfile::FirstStereotype::newName'
+
+
+def test_element_get_appliedstereotype_qualifiedName(rset):
+    applied_file = path.join('tests', 'profiles', 'applied.uml')
+    applied_resource = rset.get_resource(applied_file)
+    applied_root = applied_resource.contents[0]
+
+    c = applied_root.packagedElement[0]
+    assert len(c.get_applied_stereotypes()) == 1
+
+    stereotype = c.get_applied_stereotype('testProfile::FirstStereotype')
+
+    assert stereotype.name == "FirstStereotype"
+    assert isinstance(stereotype, uml.Stereotype)
+    assert stereotype.qualifiedName == 'testProfile::FirstStereotype'
+
+    assert c.get_applied_stereotype('testProfile::FirstStereotypeAA') is None
 
 
 def test_element_get_stereotypeapplications(rset):

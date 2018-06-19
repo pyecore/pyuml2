@@ -4,6 +4,7 @@
 import pyecore.ecore as ecore
 from pyecore.ecore import EDerivedCollection
 from pyecore.valuecontainer import EcoreUtils, BadValueError
+from pyecore.innerutils import ignored
 
 
 def check(value, etype):
@@ -94,10 +95,16 @@ not allOwnedElements()->includes(self)"""
         raise NotImplementedError(
             'operation get_applicable_stereotypes(...) not yet implemented')
 
-    def get_applied_stereotype(self, qualifiedName=None):
+    def get_applied_stereotype(self, qualifiedName):
         """Retrieves the stereotype with the specified qualified name that is applied to this element, or null if no such stereotype is  applied."""
-        raise NotImplementedError(
-            'operation get_applied_stereotype(...) not yet implemented')
+        from .profile_utils import get_stereotype_from_application
+        for o, r in self._inverse_rels:
+            if r.name.startswith('base_'):
+                stereotype = get_stereotype_from_application(o)
+                with ignored(Exception):
+                    if stereotype.qualifiedName == qualifiedName:
+                        return stereotype
+        return None
 
     def get_applied_stereotypes(self):
         """Retrieves the stereotypes that are applied to this element."""
@@ -122,13 +129,19 @@ not allOwnedElements()->includes(self)"""
 
     def get_model(self):
         """Retrieves the model that owns (either directly or indirectly) this element."""
-        raise NotImplementedError(
-            'operation get_model(...) not yet implemented')
+        from .uml import Model
+        parent = self.eContainer()
+        while parent is not None and not isinstance(parent, Model):
+            parent = parent.eContainer()
+        return parent
 
     def get_nearest_package(self):
         """Retrieves the nearest package that owns (either directly or indirectly) this element, or the element itself (if it is a package)."""
-        raise NotImplementedError(
-            'operation get_nearest_package(...) not yet implemented')
+        from .uml import Package
+        parent = self.eContainer()
+        while parent is not None and not isinstance(parent, Package):
+            parent = parent.eContainer()
+        return parent
 
     def get_relationships(self):
         """Retrieves the relationships in which this element is involved."""
@@ -168,12 +181,9 @@ not allOwnedElements()->includes(self)"""
     def get_stereotype_applications(self):
         """Retrieves the stereotype applications for this element."""
         from .profile_utils import get_stereotype_from_application
-        result = set()
-        for o, r in self._inverse_rels:
-            if r.name.startswith('base_') and \
-                    get_stereotype_from_application(o):
-                result.add(o)
-        return tuple(result)
+        return tuple(o for o, r in self._inverse_rels
+                     if r.name.startswith('base_') and
+                     get_stereotype_from_application(o))
 
     def get_target_directed_relationships(self):
         """Retrieves the directed relationships for which this element is a target."""
