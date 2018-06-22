@@ -345,15 +345,15 @@ class MultiplicityElement(_user_module.MultiplicityElementMixin, Element):
     """A multiplicity is a definition of an inclusive interval of non-negative integers beginning with a lower bound and ending with a (possibly infinite) upper bound. A MultiplicityElement embeds this information to specify the allowable cardinalities for an instantiation of the Element.
 <p>From package UML::CommonStructure.</p>"""
     isOrdered = EAttribute(eType=Boolean, derived=False,
-                           changeable=True, default_value='false')
+                           changeable=True, default_value=False)
     isUnique = EAttribute(eType=Boolean, derived=False,
-                          changeable=True, default_value='true')
+                          changeable=True, default_value=True)
     _lower = EAttribute(
         eType=Integer, derived=True, changeable=True, name='lower',
-        default_value='1', transient=True)
+        default_value=1, transient=True)
     _upper = EAttribute(
         eType=UnlimitedNatural, derived=True, changeable=True, name='upper',
-        default_value='1', transient=True)
+        default_value=1, transient=True)
     lowerValue = EReference(ordered=False, unique=True,
                             containment=True, derived=False)
     upperValue = EReference(ordered=False, unique=True,
@@ -677,7 +677,7 @@ class RedefinableElement(_user_module.RedefinableElementMixin, NamedElement):
     """A RedefinableElement is an element that, when defined in the context of a Classifier, can be redefined more specifically or differently in the context of another Classifier that specializes (directly or indirectly) the context Classifier.
 <p>From package UML::Classification.</p>"""
     isLeaf = EAttribute(eType=Boolean, derived=False,
-                        changeable=True, default_value='false')
+                        changeable=True, default_value=False)
     redefinedElement = EReference(
         ordered=False, unique=True, containment=False, derived=True, upper=-1,
         transient=True, derived_class=_user_module.DerivedRedefinedelement)
@@ -800,7 +800,7 @@ class ClassifierTemplateParameter(
     """A ClassifierTemplateParameter exposes a Classifier as a formal template parameter.
 <p>From package UML::Classification.</p>"""
     allowSubstitutable = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='true')
+        eType=Boolean, derived=False, changeable=True, default_value=True)
     constrainingClassifier = EReference(
         ordered=False, unique=True, containment=False, derived=False, upper=-1)
 
@@ -821,7 +821,7 @@ class LinkEndCreationData(_user_module.LinkEndCreationDataMixin, LinkEndData):
     """LinkEndCreationData is LinkEndData used to provide values for one end of a link to be created by a CreateLinkAction.
 <p>From package UML::Actions.</p>"""
     isReplaceAll = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     insertAt = EReference(ordered=False, unique=True,
                           containment=False, derived=False)
 
@@ -841,7 +841,7 @@ class LinkEndDestructionData(
     """LinkEndDestructionData is LinkEndData used to provide values for one end of a link to be destroyed by a DestroyLinkAction.
 <p>From package UML::Actions.</p>"""
     isDestroyDuplicates = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     destroyAt = EReference(ordered=False, unique=True,
                            containment=False, derived=False)
 
@@ -1053,7 +1053,7 @@ class Feature(_user_module.FeatureMixin, RedefinableElement):
     """A Feature declares a behavioral or structural characteristic of Classifiers.
 <p>From package UML::Classification.</p>"""
     isStatic = EAttribute(eType=Boolean, derived=False,
-                          changeable=True, default_value='false')
+                          changeable=True, default_value=False)
     featuringClassifier = EReference(
         ordered=False, unique=True, containment=False, derived=True, upper=-1,
         transient=True, derived_class=_user_module.DerivedFeaturingclassifier)
@@ -1163,7 +1163,7 @@ class ProfileApplication(
     """A profile application is used to show which profiles have been applied to a package.
 <p>From package UML::Packages.</p>"""
     isStrict = EAttribute(eType=Boolean, derived=False,
-                          changeable=True, default_value='false')
+                          changeable=True, default_value=False)
     appliedProfile = EReference(
         ordered=False, unique=True, containment=False, derived=False)
     applyingPackage = EReference(
@@ -1245,7 +1245,7 @@ class Generalization(_user_module.GeneralizationMixin, DirectedRelationship):
     """A Generalization is a taxonomic relationship between a more general Classifier and a more specific Classifier. Each instance of the specific Classifier is also an instance of the general Classifier. The specific Classifier inherits the features of the more general Classifier. A Generalization is owned by the specific Classifier.
 <p>From package UML::Classification.</p>"""
     isSubstitutable = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='true')
+        eType=Boolean, derived=False, changeable=True, default_value=True)
     general = EReference(ordered=False, unique=True,
                          containment=False, derived=False)
     generalizationSet = EReference(
@@ -1508,7 +1508,7 @@ class Continuation(_user_module.ContinuationMixin, InteractionFragment):
     """A Continuation is a syntactic way to define continuations of different branches of an alternative CombinedFragment. Continuations are intuitively similar to labels representing intermediate points in a flow of control.
 <p>From package UML::Interactions.</p>"""
     setting = EAttribute(eType=Boolean, derived=False,
-                         changeable=True, default_value='true')
+                         changeable=True, default_value=True)
 
     def __init__(self, setting=None, **kwargs):
 
@@ -1728,9 +1728,9 @@ class GeneralizationSet(
     """A GeneralizationSet is a PackageableElement whose instances represent sets of Generalization relationships.
 <p>From package UML::Classification.</p>"""
     isCovering = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
     isDisjoint = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
     powertype = EReference(ordered=False, unique=True,
                            containment=False, derived=False)
     generalization = EReference(
@@ -1837,9 +1837,9 @@ class ActivityPartition(_user_module.ActivityPartitionMixin, ActivityGroup):
     """An ActivityPartition is a kind of ActivityGroup for identifying ActivityNodes that have some characteristic in common.
 <p>From package UML::Activities.</p>"""
     isDimension = EAttribute(eType=Boolean, derived=False,
-                             changeable=True, default_value='false')
+                             changeable=True, default_value=False)
     isExternal = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
     node = EReference(ordered=False, unique=True,
                       containment=False, derived=False, upper=-1)
     represents = EReference(ordered=False, unique=True,
@@ -1969,9 +1969,9 @@ class ObjectFlow(_user_module.ObjectFlowMixin, ActivityEdge):
     """An ObjectFlow is an ActivityEdge that is traversed by object tokens that may hold values. Object flows also support multicast/receive, token selection from object nodes, and transformation of tokens.
 <p>From package UML::Activities.</p>"""
     isMulticast = EAttribute(eType=Boolean, derived=False,
-                             changeable=True, default_value='false')
+                             changeable=True, default_value=False)
     isMultireceive = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     selection = EReference(ordered=False, unique=True,
                            containment=False, derived=False)
     transformation = EReference(
@@ -2115,7 +2115,7 @@ class BehavioralFeature(
         eType=CallConcurrencyKind, derived=False, changeable=True,
         default_value=CallConcurrencyKind.sequential)
     isAbstract = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
     method = EReference(ordered=False, unique=True,
                         containment=False, derived=False, upper=-1)
     ownedParameter = EReference(
@@ -2162,7 +2162,7 @@ class State(_user_module.StateMixin, Namespace, RedefinableElement, Vertex):
         transient=True)
     _isSimple = EAttribute(
         eType=Boolean, derived=True, changeable=False, name='isSimple',
-        default_value='true', transient=True)
+        default_value=True, transient=True)
     _isSubmachineState = EAttribute(
         eType=Boolean, derived=True, changeable=False,
         name='isSubmachineState', transient=True)
@@ -2291,7 +2291,7 @@ class TimeEvent(_user_module.TimeEventMixin, Event):
     """A TimeEvent is an Event that occurs at a specific point in time.
 <p>From package UML::CommonBehavior.</p>"""
     isRelative = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
     when = EReference(ordered=False, unique=True,
                       containment=True, derived=False)
 
@@ -2396,7 +2396,7 @@ class TimeObservation(_user_module.TimeObservationMixin, Observation):
     """A TimeObservation is a reference to a time instant during an execution. It points out the NamedElement in the model to observe and whether the observation is when this NamedElement is entered or when it is exited.
 <p>From package UML::Values.</p>"""
     firstEvent = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='true')
+                            changeable=True, default_value=True)
     event = EReference(ordered=False, unique=True,
                        containment=False, derived=False)
 
@@ -2533,9 +2533,9 @@ class Parameter(_user_module.ParameterMixin, ConnectableElement,
     effect = EAttribute(eType=ParameterEffectKind,
                         derived=False, changeable=True)
     isException = EAttribute(eType=Boolean, derived=False,
-                             changeable=True, default_value='false')
+                             changeable=True, default_value=False)
     isStream = EAttribute(eType=Boolean, derived=False,
-                          changeable=True, default_value='false')
+                          changeable=True, default_value=False)
     defaultValue = EReference(
         ordered=False, unique=True, containment=True, derived=False)
     operation = EReference(ordered=False, unique=True,
@@ -2596,7 +2596,7 @@ class StructuralFeature(
     """A StructuralFeature is a typed feature of a Classifier that specifies the structure of instances of the Classifier.
 <p>From package UML::Classification.</p>"""
     isReadOnly = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
 
     def __init__(self, isReadOnly=None, **kwargs):
 
@@ -2656,7 +2656,7 @@ class Action(_user_module.ActionMixin, ExecutableNode):
     """An Action is the fundamental unit of executable functionality. The execution of an Action represents some transformation or processing in the modeled system. Actions provide the ExecutableNodes within Activities and may also be used within Interactions.
 <p>From package UML::Actions.</p>"""
     isLocallyReentrant = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     _context = EReference(
         ordered=False, unique=True, containment=False, derived=True,
         name='context', transient=True)
@@ -2702,7 +2702,7 @@ class ObjectNode(_user_module.ObjectNodeMixin, ActivityNode, TypedElement):
     """An ObjectNode is an abstract ActivityNode that may hold tokens within the object flow in an Activity. ObjectNodes also support token selection, limitation on the number of tokens held, specification of the state required for tokens being held, and carrying control values.
 <p>From package UML::Activities.</p>"""
     isControlType = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     ordering = EAttribute(
         eType=ObjectNodeOrderingKind, derived=False, changeable=True,
         default_value=ObjectNodeOrderingKind.FIFO)
@@ -2806,7 +2806,7 @@ class JoinNode(_user_module.JoinNodeMixin, ControlNode):
     """A JoinNode is a ControlNode that synchronizes multiple flows.
 <p>From package UML::Activities.</p>"""
     isCombineDuplicate = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='true')
+        eType=Boolean, derived=False, changeable=True, default_value=True)
     joinSpec = EReference(ordered=False, unique=True,
                           containment=True, derived=False)
 
@@ -3227,7 +3227,7 @@ class AcceptEventAction(_user_module.AcceptEventActionMixin, Action):
     """An AcceptEventAction is an Action that waits for the occurrence of one or more specific Events.
 <p>From package UML::Actions.</p>"""
     isUnmarshall = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     result = EReference(ordered=True, unique=True,
                         containment=True, derived=False, upper=-1)
     trigger = EReference(ordered=False, unique=True,
@@ -3310,9 +3310,9 @@ class DestroyObjectAction(_user_module.DestroyObjectActionMixin, Action):
     """A DestroyObjectAction is an Action that destroys objects.
 <p>From package UML::Actions.</p>"""
     isDestroyLinks = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     isDestroyOwnedObjects = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     target = EReference(ordered=False, unique=True,
                         containment=True, derived=False)
 
@@ -3419,7 +3419,7 @@ class ReadIsClassifiedObjectAction(
     """A ReadIsClassifiedObjectAction is an Action that determines whether an object is classified by a given Classifier.
 <p>From package UML::Actions.</p>"""
     isDirect = EAttribute(eType=Boolean, derived=False,
-                          changeable=True, default_value='false')
+                          changeable=True, default_value=False)
     classifier = EReference(ordered=False, unique=True,
                             containment=False, derived=False)
     object = EReference(ordered=False, unique=True,
@@ -3514,7 +3514,7 @@ class ReclassifyObjectAction(_user_module.ReclassifyObjectActionMixin, Action):
     """A ReclassifyObjectAction is an Action that changes the Classifiers that classify an object.
 <p>From package UML::Actions.</p>"""
     isReplaceAll = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     newClassifier = EReference(
         ordered=False, unique=True, containment=False, derived=False, upper=-1)
     object = EReference(ordered=False, unique=True,
@@ -3545,7 +3545,7 @@ class ReduceAction(_user_module.ReduceActionMixin, Action):
     """A ReduceAction is an Action that reduces a collection to a single value by repeatedly combining the elements of the collection using a reducer Behavior.
 <p>From package UML::Actions.</p>"""
     isOrdered = EAttribute(eType=Boolean, derived=False,
-                           changeable=True, default_value='false')
+                           changeable=True, default_value=False)
     collection = EReference(ordered=False, unique=True,
                             containment=True, derived=False)
     reducer = EReference(ordered=False, unique=True,
@@ -3716,7 +3716,7 @@ class LiteralBoolean(_user_module.LiteralBooleanMixin, LiteralSpecification):
     """A LiteralBoolean is a specification of a Boolean value.
 <p>From package UML::Values.</p>"""
     value = EAttribute(eType=Boolean, derived=False,
-                       changeable=True, default_value='false')
+                       changeable=True, default_value=False)
 
     def __init__(self, value=None, **kwargs):
 
@@ -3730,7 +3730,7 @@ class LiteralInteger(_user_module.LiteralIntegerMixin, LiteralSpecification):
     """A LiteralInteger is a specification of an Integer value.
 <p>From package UML::Values.</p>"""
     value = EAttribute(eType=Integer, derived=False,
-                       changeable=True, default_value='0')
+                       changeable=True, default_value=0)
 
     def __init__(self, value=None, **kwargs):
 
@@ -3780,7 +3780,7 @@ class LiteralUnlimitedNatural(
     """A LiteralUnlimitedNatural is a specification of an UnlimitedNatural number.
 <p>From package UML::Values.</p>"""
     value = EAttribute(eType=UnlimitedNatural, derived=False,
-                       changeable=True, default_value='0')
+                       changeable=True, default_value=0)
 
     def __init__(self, value=None, **kwargs):
 
@@ -3806,9 +3806,9 @@ class Classifier(
     """A Classifier represents a classification of instances according to their Features.
 <p>From package UML::Classification.</p>"""
     isAbstract = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
     isFinalSpecialization = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     feature = EReference(
         ordered=False, unique=True, containment=False, derived=True, upper=-1,
         transient=True, derived_class=_user_module.DerivedFeature)
@@ -3912,16 +3912,16 @@ class Operation(_user_module.OperationMixin, BehavioralFeature,
         eType=Boolean, derived=True, changeable=False, name='isOrdered',
         transient=True)
     isQuery = EAttribute(eType=Boolean, derived=False,
-                         changeable=True, default_value='false')
+                         changeable=True, default_value=False)
     _isUnique = EAttribute(
         eType=Boolean, derived=True, changeable=False, name='isUnique',
-        default_value='true', transient=True)
+        default_value=True, transient=True)
     _lower = EAttribute(
         eType=Integer, derived=True, changeable=False, name='lower',
-        default_value='1', transient=True)
+        default_value=1, transient=True)
     _upper = EAttribute(
         eType=UnlimitedNatural, derived=True, changeable=False, name='upper',
-        default_value='1', transient=True)
+        default_value=1, transient=True)
     bodyCondition = EReference(
         ordered=False, unique=True, containment=False, derived=False)
     class_ = EReference(ordered=False, unique=True,
@@ -4022,7 +4022,7 @@ class Pin(_user_module.PinMixin, ObjectNode, MultiplicityElement):
     """A Pin is an ObjectNode and MultiplicityElement that provides input values to an Action or accepts output values from an Action.
 <p>From package UML::Actions.</p>"""
     isControl = EAttribute(eType=Boolean, derived=False,
-                           changeable=True, default_value='false')
+                           changeable=True, default_value=False)
 
     def __init__(self, isControl=None, **kwargs):
 
@@ -4113,7 +4113,7 @@ class CallAction(_user_module.CallActionMixin, InvocationAction):
     """CallAction is an abstract class for Actions that invoke a Behavior with given argument values and (if the invocation is synchronous) receive reply values.
 <p>From package UML::Actions.</p>"""
     isSynchronous = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='true')
+        eType=Boolean, derived=False, changeable=True, default_value=True)
     result = EReference(ordered=True, unique=True,
                         containment=True, derived=False, upper=-1)
 
@@ -4423,7 +4423,7 @@ class StructuredActivityNode(_user_module.StructuredActivityNodeMixin, Action,
     """A StructuredActivityNode is an Action that is also an ActivityGroup and whose behavior is specified by the ActivityNodes and ActivityEdges it so contains. Unlike other kinds of ActivityGroup, a StructuredActivityNode owns the ActivityNodes and ActivityEdges it contains, and so a node or edge can only be directly contained in one StructuredActivityNode, though StructuredActivityNodes may be nested.
 <p>From package UML::Actions.</p>"""
     mustIsolate = EAttribute(eType=Boolean, derived=False,
-                             changeable=True, default_value='false')
+                             changeable=True, default_value=False)
     edge = EReference(ordered=False, unique=True,
                       containment=True, derived=False, upper=-1)
     structuredNodeInput = EReference(
@@ -4484,7 +4484,7 @@ class AddStructuralFeatureValueAction(
     """An AddStructuralFeatureValueAction is a WriteStructuralFeatureAction for adding values to a StructuralFeature.
 <p>From package UML::Actions.</p>"""
     isReplaceAll = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     insertAt = EReference(ordered=False, unique=True,
                           containment=True, derived=False)
 
@@ -4504,7 +4504,7 @@ class AddVariableValueAction(
     """An AddVariableValueAction is a WriteVariableAction for adding values to a Variable.
 <p>From package UML::Actions.</p>"""
     isReplaceAll = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     insertAt = EReference(ordered=False, unique=True,
                           containment=True, derived=False)
 
@@ -4576,7 +4576,7 @@ class RemoveStructuralFeatureValueAction(
     """A RemoveStructuralFeatureValueAction is a WriteStructuralFeatureAction that removes values from a StructuralFeature.
 <p>From package UML::Actions.</p>"""
     isRemoveDuplicates = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     removeAt = EReference(ordered=False, unique=True,
                           containment=True, derived=False)
 
@@ -4596,7 +4596,7 @@ class RemoveVariableValueAction(
     """A RemoveVariableValueAction is a WriteVariableAction that removes values from a Variables.
 <p>From package UML::Actions.</p>"""
     isRemoveDuplicates = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     removeAt = EReference(ordered=False, unique=True,
                           containment=True, derived=False)
 
@@ -4664,7 +4664,7 @@ class Association(_user_module.AssociationMixin, Classifier, Relationship):
     """A link is a tuple of values that refer to typed objects.  An Association classifies a set of links, each of which is an instance of the Association.  Each value in the link refers to an instance of the type of the corresponding end of the Association.
 <p>From package UML::StructuredClassifiers.</p>"""
     isDerived = EAttribute(eType=Boolean, derived=False,
-                           changeable=True, default_value='false')
+                           changeable=True, default_value=False)
     endType = EReference(
         ordered=False, unique=True, containment=False, derived=True, upper=-1,
         transient=True, derived_class=_user_module.DerivedEndtype)
@@ -4707,13 +4707,13 @@ class Property(_user_module.PropertyMixin, StructuralFeature,
         default_value=AggregationKind.none)
     _isComposite = EAttribute(
         eType=Boolean, derived=True, changeable=True, name='isComposite',
-        default_value='false', transient=True)
+        default_value=False, transient=True)
     isDerived = EAttribute(eType=Boolean, derived=False,
-                           changeable=True, default_value='false')
+                           changeable=True, default_value=False)
     isDerivedUnion = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     isID = EAttribute(eType=Boolean, derived=False,
-                      changeable=True, default_value='false')
+                      changeable=True, default_value=False)
     datatype = EReference(ordered=False, unique=True,
                           containment=False, derived=False)
     interface = EReference(ordered=False, unique=True,
@@ -4926,9 +4926,9 @@ class ConditionalNode(_user_module.ConditionalNodeMixin,
     """A ConditionalNode is a StructuredActivityNode that chooses one among some number of alternative collections of ExecutableNodes to execute.
 <p>From package UML::Actions.</p>"""
     isAssured = EAttribute(eType=Boolean, derived=False,
-                           changeable=True, default_value='false')
+                           changeable=True, default_value=False)
     isDeterminate = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     clause = EReference(ordered=False, unique=True,
                         containment=True, derived=False, upper=-1)
     result = EReference(ordered=True, unique=True,
@@ -5000,7 +5000,7 @@ class LoopNode(_user_module.LoopNodeMixin, StructuredActivityNode):
     """A LoopNode is a StructuredActivityNode that represents an iterative loop with setup, test, and body sections.
 <p>From package UML::Actions.</p>"""
     isTestedFirst = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     bodyOutput = EReference(ordered=True, unique=True,
                             containment=False, derived=False, upper=-1)
     bodyPart = EReference(ordered=False, unique=True,
@@ -5121,11 +5121,11 @@ class Port(_user_module.PortMixin, Property):
     """A Port is a property of an EncapsulatedClassifier that specifies a distinct interaction point between that EncapsulatedClassifier and its environment or between the (behavior of the) EncapsulatedClassifier and its internal parts. Ports are connected to Properties of the EncapsulatedClassifier by Connectors through which requests can be made to invoke BehavioralFeatures. A Port may specify the services an EncapsulatedClassifier provides (offers) to its environment as well as the services that an EncapsulatedClassifier expects (requires) of its environment.  A Port may have an associated ProtocolStateMachine.
 <p>From package UML::StructuredClassifiers.</p>"""
     isBehavior = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
     isConjugated = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     isService = EAttribute(eType=Boolean, derived=False,
-                           changeable=True, default_value='true')
+                           changeable=True, default_value=True)
     protocol = EReference(ordered=False, unique=True,
                           containment=False, derived=False)
     provided = EReference(
@@ -5227,7 +5227,7 @@ class Class(_user_module.ClassMixin, EncapsulatedClassifier,
     """A Class classifies a set of objects and specifies the features that characterize the structure and behavior of those objects.  A Class may have an internal structure and Ports.
 <p>From package UML::StructuredClassifiers.</p>"""
     isActive = EAttribute(eType=Boolean, derived=False,
-                          changeable=True, default_value='false')
+                          changeable=True, default_value=False)
     ownedOperation = EReference(
         ordered=True, unique=True, containment=True, derived=False, upper=-1)
     extension = EReference(
@@ -5272,7 +5272,7 @@ class Behavior(_user_module.BehaviorMixin, Class):
     """Behavior is a specification of how its context BehavioredClassifier changes state over time. This specification may be either a definition of possible behavior execution or emergent behavior, or a selective illustration of an interesting subset of possible executions. The latter form is typically used for capturing examples, such as a trace of a particular execution.
 <p>From package UML::CommonBehavior.</p>"""
     isReentrant = EAttribute(eType=Boolean, derived=False,
-                             changeable=True, default_value='true')
+                             changeable=True, default_value=True)
     specification = EReference(
         ordered=False, unique=True, containment=False, derived=False)
     _context = EReference(
@@ -5345,7 +5345,7 @@ class Component(_user_module.ComponentMixin, Class):
     """A Component represents a modular part of a system that encapsulates its contents and whose manifestation is replaceable within its environment.
 <p>From package UML::StructuredClassifiers.</p>"""
     isIndirectlyInstantiated = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='true')
+        eType=Boolean, derived=False, changeable=True, default_value=True)
     packagedElement = EReference(
         ordered=False, unique=True, containment=True, derived=False, upper=-1)
     provided = EReference(
@@ -5383,9 +5383,9 @@ class Activity(_user_module.ActivityMixin, Behavior):
     """An Activity is the specification of parameterized Behavior as the coordinated sequencing of subordinate units.
 <p>From package UML::Activities.</p>"""
     isReadOnly = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='false')
+                            changeable=True, default_value=False)
     isSingleExecution = EAttribute(
-        eType=Boolean, derived=False, changeable=True, default_value='false')
+        eType=Boolean, derived=False, changeable=True, default_value=False)
     ownedGroup = EReference(ordered=False, unique=True,
                             containment=True, derived=False, upper=-1)
     edge = EReference(ordered=False, unique=True,
