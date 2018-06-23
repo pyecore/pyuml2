@@ -65,10 +65,16 @@ not allOwnedElements()->includes(self)"""
         raise NotImplementedError(
             'operation add_keyword(...) not yet implemented')
 
-    def apply_stereotype(self, stereotype=None):
+    def apply_stereotype(self, stereotype):
         """Applies the specified stereotype to this element."""
-        raise NotImplementedError(
-            'operation apply_stereotype(...) not yet implemented')
+        from .profile_utils import get_definition_reference_matching
+        gdrm = get_definition_reference_matching
+        definition, base_reference = gdrm(stereotype, self)
+        if definition is None:
+            return
+        application = definition()
+        setattr(application, base_reference.name, self)
+        self.eResource.append(application)
 
     def create_EAnnotation(self, source=None):
         """Creates an annotation with the specified source and this element as its model element."""
@@ -217,8 +223,8 @@ not allOwnedElements()->includes(self)"""
 
     def is_stereotype_applied(self, stereotype=None):
         """Determines whether the specified stereotype is applied to this element."""
-        raise NotImplementedError(
-            'operation is_stereotype_applied(...) not yet implemented')
+        stereotype = self.get_applied_stereotype(stereotype.qualifiedName)
+        return stereotype is not None
 
     def is_stereotype_required(self, stereotype=None):
         """Determines whether the specified stereotype is required for this element."""
@@ -516,19 +522,19 @@ class MultiplicityElementMixin(object):
 
     @property
     def lower(self):
-        raise NotImplementedError('Missing implementation for lower')
+        return self._lower
 
     @lower.setter
     def lower(self, value):
-        raise NotImplementedError('Missing implementation for lower')
+        self._lower = value
 
     @property
     def upper(self):
-        raise NotImplementedError('Missing implementation for upper')
+        return self._upper
 
     @upper.setter
     def upper(self, value):
-        raise NotImplementedError('Missing implementation for upper')
+        self._upper = value
 
     def __init__(self, isOrdered=None, isUnique=None, lower=None,
                  lowerValue=None, upper=None, upperValue=None, **kwargs):
@@ -4184,13 +4190,14 @@ metamodelReference.importedPackage.elementImport.importedElement.allOwningPackag
         """Creates and returns an instance of (the Ecore representation of) the specified classifier defined in this profile."""
         raise NotImplementedError('operation create(...) not yet implemented')
 
-    def define(self):
-        """Defines this profile by (re)creating Ecore representations of its current contents."""
-        raise NotImplementedError('operation define(...) not yet implemented')
-
     def define(self, options=None, diagnostics=None, context=None):
         """Defines this profile by (re)creating Ecore representations of its current contents, using the specified options, diagnostics, and context."""
-        raise NotImplementedError('operation define(...) not yet implemented')
+        from .profile_utils import UML_20_URI, define_profile
+        eannotation = self.getEAnnotation(UML_20_URI)
+        if not eannotation:
+            eannotation = ecore.EAnnotation(source=UML_20_URI)
+        eannotation.contents.append(define_profile(self))
+        self.eAnnotations.append(eannotation)
 
     def get_definition(self):
         """Retrieves the current definition (Ecore representation) of this profile."""
