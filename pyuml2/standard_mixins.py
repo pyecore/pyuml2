@@ -1,14 +1,14 @@
 """Mixins to be implemented by user."""
 
 
-class AuxiliaryMixin:
+class AuxiliaryMixin(object):
     """User defined mixin class for Auxiliary."""
 
     def __init__(self, base_Class=None, **kwargs):
         super(AuxiliaryMixin, self).__init__()
 
 
-class CallMixin:
+class CallMixin(object):
     """User defined mixin class for Call."""
 
     def __init__(self, base_Usage=None, **kwargs):
@@ -21,7 +21,7 @@ class CallMixin:
             'operation client_and_supplier_are_operations(...) not yet implemented')
 
 
-class CreateMixin:
+class CreateMixin(object):
     """User defined mixin class for Create."""
 
     def __init__(self, base_BehavioralFeature=None, base_Usage=None, **kwargs):
@@ -34,49 +34,49 @@ class CreateMixin:
             'operation client_and_supplier_are_classifiers(...) not yet implemented')
 
 
-class DeriveMixin:
+class DeriveMixin(object):
     """User defined mixin class for Derive."""
 
     def __init__(self, computation=None, base_Abstraction=None, **kwargs):
         super(DeriveMixin, self).__init__()
 
 
-class DestroyMixin:
+class DestroyMixin(object):
     """User defined mixin class for Destroy."""
 
     def __init__(self, base_BehavioralFeature=None, **kwargs):
         super(DestroyMixin, self).__init__()
 
 
-class FileMixin:
+class FileMixin(object):
     """User defined mixin class for File."""
 
     def __init__(self, base_Artifact=None, **kwargs):
         super(FileMixin, self).__init__()
 
 
-class EntityMixin:
+class EntityMixin(object):
     """User defined mixin class for Entity."""
 
     def __init__(self, base_Component=None, **kwargs):
         super(EntityMixin, self).__init__()
 
 
-class FocusMixin:
+class FocusMixin(object):
     """User defined mixin class for Focus."""
 
     def __init__(self, base_Class=None, **kwargs):
         super(FocusMixin, self).__init__()
 
 
-class FrameworkMixin:
+class FrameworkMixin(object):
     """User defined mixin class for Framework."""
 
     def __init__(self, base_Package=None, **kwargs):
         super(FrameworkMixin, self).__init__()
 
 
-class ImplementMixin:
+class ImplementMixin(object):
     """User defined mixin class for Implement."""
 
     def __init__(self, base_Component=None, **kwargs):
@@ -88,7 +88,7 @@ class ImplementMixin:
             'operation implements_specification(...) not yet implemented')
 
 
-class ImplementationClassMixin:
+class ImplementationClassMixin(object):
     """User defined mixin class for ImplementationClass."""
 
     def __init__(self, base_Class=None, **kwargs):
@@ -100,7 +100,7 @@ class ImplementationClassMixin:
             'operation cannot_be_realization(...) not yet implemented')
 
 
-class InstantiateMixin:
+class InstantiateMixin(object):
     """User defined mixin class for Instantiate."""
 
     def __init__(self, base_Usage=None, **kwargs):
@@ -113,28 +113,28 @@ class InstantiateMixin:
             'operation client_and_supplier_are_classifiers(...) not yet implemented')
 
 
-class MetaclassMixin:
+class MetaclassMixin(object):
     """User defined mixin class for Metaclass."""
 
     def __init__(self, base_Class=None, **kwargs):
         super(MetaclassMixin, self).__init__()
 
 
-class ModelLibraryMixin:
+class ModelLibraryMixin(object):
     """User defined mixin class for ModelLibrary."""
 
     def __init__(self, base_Package=None, **kwargs):
         super(ModelLibraryMixin, self).__init__()
 
 
-class ProcessMixin:
+class ProcessMixin(object):
     """User defined mixin class for Process."""
 
     def __init__(self, base_Component=None, **kwargs):
         super(ProcessMixin, self).__init__()
 
 
-class RealizationMixin:
+class RealizationMixin(object):
     """User defined mixin class for Realization."""
 
     def __init__(self, base_Classifier=None, **kwargs):
@@ -146,21 +146,21 @@ class RealizationMixin:
             'operation cannot_be_implementation_class(...) not yet implemented')
 
 
-class RefineMixin:
+class RefineMixin(object):
     """User defined mixin class for Refine."""
 
     def __init__(self, base_Abstraction=None, **kwargs):
         super(RefineMixin, self).__init__()
 
 
-class ResponsibilityMixin:
+class ResponsibilityMixin(object):
     """User defined mixin class for Responsibility."""
 
     def __init__(self, base_Usage=None, **kwargs):
         super(ResponsibilityMixin, self).__init__()
 
 
-class SendMixin:
+class SendMixin(object):
     """User defined mixin class for Send."""
 
     def __init__(self, base_Usage=None, **kwargs):
@@ -173,14 +173,14 @@ class SendMixin:
             'operation client_operation_sends_supplier_signal(...) not yet implemented')
 
 
-class ServiceMixin:
+class ServiceMixin(object):
     """User defined mixin class for Service."""
 
     def __init__(self, base_Component=None, **kwargs):
         super(ServiceMixin, self).__init__()
 
 
-class SpecificationMixin:
+class SpecificationMixin(object):
     """User defined mixin class for Specification."""
 
     def __init__(self, base_Classifier=None, **kwargs):
@@ -192,21 +192,21 @@ class SpecificationMixin:
             'operation cannot_be_type(...) not yet implemented')
 
 
-class SubsystemMixin:
+class SubsystemMixin(object):
     """User defined mixin class for Subsystem."""
 
     def __init__(self, base_Component=None, **kwargs):
         super(SubsystemMixin, self).__init__()
 
 
-class TraceMixin:
+class TraceMixin(object):
     """User defined mixin class for Trace."""
 
     def __init__(self, base_Abstraction=None, **kwargs):
         super(TraceMixin, self).__init__()
 
 
-class TypeMixin:
+class TypeMixin(object):
     """User defined mixin class for Type."""
 
     def __init__(self, base_Class=None, **kwargs):
@@ -218,7 +218,7 @@ class TypeMixin:
             'operation cannot_be_specification(...) not yet implemented')
 
 
-class UtilityMixin:
+class UtilityMixin(object):
     """User defined mixin class for Utility."""
 
     def __init__(self, base_Class=None, **kwargs):
@@ -230,56 +230,56 @@ class UtilityMixin:
             'operation is_utility(...) not yet implemented')
 
 
-class BuildComponentMixin:
+class BuildComponentMixin(object):
     """User defined mixin class for BuildComponent."""
 
     def __init__(self, base_Component=None, **kwargs):
         super(BuildComponentMixin, self).__init__()
 
 
-class MetamodelMixin:
+class MetamodelMixin(object):
     """User defined mixin class for Metamodel."""
 
     def __init__(self, base_Model=None, **kwargs):
         super(MetamodelMixin, self).__init__()
 
 
-class SystemModelMixin:
+class SystemModelMixin(object):
     """User defined mixin class for SystemModel."""
 
     def __init__(self, base_Model=None, **kwargs):
         super(SystemModelMixin, self).__init__()
 
 
-class DocumentMixin:
+class DocumentMixin(object):
     """User defined mixin class for Document."""
 
     def __init__(self, **kwargs):
         super(DocumentMixin, self).__init__(**kwargs)
 
 
-class ExecutableMixin:
+class ExecutableMixin(object):
     """User defined mixin class for Executable."""
 
     def __init__(self, **kwargs):
         super(ExecutableMixin, self).__init__(**kwargs)
 
 
-class LibraryMixin:
+class LibraryMixin(object):
     """User defined mixin class for Library."""
 
     def __init__(self, **kwargs):
         super(LibraryMixin, self).__init__(**kwargs)
 
 
-class ScriptMixin:
+class ScriptMixin(object):
     """User defined mixin class for Script."""
 
     def __init__(self, **kwargs):
         super(ScriptMixin, self).__init__(**kwargs)
 
 
-class SourceMixin:
+class SourceMixin(object):
     """User defined mixin class for Source."""
 
     def __init__(self, **kwargs):
