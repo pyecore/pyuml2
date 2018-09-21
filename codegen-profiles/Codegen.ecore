@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Codegen" nsURI="http://www.eclipse.org/papyrus/Codegen/1" nsPrefix="Codegen">
+  <eClassifiers xsi:type="ecore:EClass" name="Project">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Control how code is generated:&#xA;- name of project to generate code into&#xA;- target folder within that project (e.g. src-gen)&#xA;- Batch vs. incremental&#xA;- Prefix: namespace prefix of generated code (similar to prefix option in genmodel)"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Model" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Model"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generationMode" ordered="false"
+        lowerBound="1" eType="#//GenerationModeKind"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projectName" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceFolder" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prefix" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GenerationModeKind">
+    <eLiterals name="Batch"/>
+    <eLiterals name="Incremental" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GeneratorHint">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Information about the generator that should be used."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Element" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Element"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="language" ordered="false"
+        lowerBound="1" eType="#//Language"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="generatorID" ordered="false"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Language">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="&lt;p>Indicate programming language. The idea is that the GeneratorHint::language attribute is not an arbitrary string (which would be error prone), but can be selected from a list of available programming languages (i.e. a library with supported languages is required).&lt;/p>&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NoCodeGen">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Information that no code should be generated for this element."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Element" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Element"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MavenProject" eSuperTypes="#//Project">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="archeType" ordered="false"
+        lowerBound="1" eType="#//ArcheType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependencies" ordered="false"
+        upperBound="-1" eType="#//MavenDependency"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" ordered="false"
+        lowerBound="1" eType="#//ParentArtifact"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" ordered="false"
+        upperBound="-1" eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Package" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Package"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArcheType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repository" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MavenDependency">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exclusions" ordered="false"
+        upperBound="-1" eType="#//ExcludedDependency"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExcludedDependency">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParentArtifact">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="groupId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="artifactId" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" ordered="false"
+        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+        lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+  </eClassifiers>
+</ecore:EPackage>

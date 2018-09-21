@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Ecore="http://www.eclipse.org/uml2/schemas/Ecore/5" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/uml2/schemas/Ecore/5 pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA">
+  <uml:Profile xmi:id="_fPDsIBa-EearhdjjJ6cVzQ" name="Codegen" metaclassReference="_WWO_YBbAEearhdjjJ6cVzQ _LQB30CXmEea8zMl4rVTOhQ _bIj1ICi3EeaXvZJsTlfH8A _6sPNwMLHEeafnp9_6s3n2g">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_SK_skCXrEea8zMl4rVTOhQ" annotatedElement="_YmGwQBbAEearhdjjJ6cVzQ">
+      <body>Control how code is generated:
+- name of project to generate code into
+- target folder within that project (e.g. src-gen)
+- Batch vs. incremental
+- Prefix: namespace prefix of generated code (similar to prefix option in genmodel)</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_xCzHMCXrEea8zMl4rVTOhQ" annotatedElement="_FZ2uoCXmEea8zMl4rVTOhQ">
+      <body>Information about the generator that should be used.</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_nxeA8Ci4EeaXvZJsTlfH8A" annotatedElement="_VN0VACi3EeaXvZJsTlfH8A">
+      <body>&lt;p>Indicate programming language. The idea is that the GeneratorHint::language attribute is not an arbitrary string (which would be error prone), but can be selected from a list of available programming languages (i.e. a library with supported languages is required).&lt;/p>
+</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_7NvbECvnEeaYpOY-WMgw6g" annotatedElement="_xUTQwCvnEeaYpOY-WMgw6g">
+      <body>Information that no code should be generated for this element.</body>
+    </ownedComment>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_WWO_YBbAEearhdjjJ6cVzQ" alias="Model">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_LQB30CXmEea8zMl4rVTOhQ" alias="Element">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Element"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_bIj1ICi3EeaXvZJsTlfH8A" alias="Class">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+    </elementImport>
+    <elementImport xmi:type="uml:ElementImport" xmi:id="_6sPNwMLHEeafnp9_6s3n2g" alias="Package">
+      <importedElement xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+    </elementImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_fTx0EBa-EearhdjjJ6cVzQ">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_vRyHACjUEea6Erh9I-z_Vw">
+      <importedPackage xmi:type="uml:Model" href="pathmap://Codegen_PROFILES/languages.uml#_IpNxsCjHEeafevO6kGeA7g"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_YmGwQBbAEearhdjjJ6cVzQ" name="Project">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_a4YU4BbAEearhdjjJ6cVzQ" name="base_Model" association="_a4TcYBbAEearhdjjJ6cVzQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Model"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_zHJp8BdYEeaJCsMcmo4-xQ" name="generationMode" type="_2gu04BdYEeaJCsMcmo4-xQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ak-T4BbEEearhdjjJ6cVzQ" name="projectName">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WG6TECXsEea8zMl4rVTOhQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WG8IQCXsEea8zMl4rVTOhQ" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_J96bABbEEearhdjjJ6cVzQ" name="sourceFolder">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_KvfaEBhSEeatusARLAolXw" name="prefix" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_O7DwYCXsEea8zMl4rVTOhQ"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_b-IbICjLEeafevO6kGeA7g" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_a4TcYBbAEearhdjjJ6cVzQ" name="E_Project_Model1" memberEnd="_a4V4oBbAEearhdjjJ6cVzQ _a4YU4BbAEearhdjjJ6cVzQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_a4V4oBbAEearhdjjJ6cVzQ" name="extension_Project" type="_YmGwQBbAEearhdjjJ6cVzQ" aggregation="composite" association="_a4TcYBbAEearhdjjJ6cVzQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Enumeration" xmi:id="_2gu04BdYEeaJCsMcmo4-xQ" name="GenerationModeKind">
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_2yc3ABdYEeaJCsMcmo4-xQ" name="Batch"/>
+      <ownedLiteral xmi:type="uml:EnumerationLiteral" xmi:id="_4J0SkBdYEeaJCsMcmo4-xQ" name="Incremental"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_FZ2uoCXmEea8zMl4rVTOhQ" name="GeneratorHint">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_NnAWQSXmEea8zMl4rVTOhQ" name="base_Element" association="_Nm-hECXmEea8zMl4rVTOhQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Element"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_QqJ-MCXmEea8zMl4rVTOhQ" name="language" visibility="public" type="_VN0VACi3EeaXvZJsTlfH8A"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ina2kCi7EeafrZkh5ax-lA" name="generatorID" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ptlA8Ci7EeafrZkh5ax-lA"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ptqggCi7EeafrZkh5ax-lA" value="1"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_Nm-hECXmEea8zMl4rVTOhQ" name="E_GeneratorHint_Element1" memberEnd="_NnAWQCXmEea8zMl4rVTOhQ _NnAWQSXmEea8zMl4rVTOhQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_NnAWQCXmEea8zMl4rVTOhQ" name="extension_GeneratorHint" type="_FZ2uoCXmEea8zMl4rVTOhQ" aggregation="composite" association="_Nm-hECXmEea8zMl4rVTOhQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_VN0VACi3EeaXvZJsTlfH8A" name="Language">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_etU8YSi3EeaXvZJsTlfH8A" name="base_Class" association="_etTHMCi3EeaXvZJsTlfH8A">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_etTHMCi3EeaXvZJsTlfH8A" name="E_Language_Class1" memberEnd="_etU8YCi3EeaXvZJsTlfH8A _etU8YSi3EeaXvZJsTlfH8A">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_etU8YCi3EeaXvZJsTlfH8A" name="extension_Language" type="_VN0VACi3EeaXvZJsTlfH8A" aggregation="composite" association="_etTHMCi3EeaXvZJsTlfH8A"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_xUTQwCvnEeaYpOY-WMgw6g" name="NoCodeGen">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_3kxwUCvnEeaYpOY-WMgw6g" name="base_Element" association="_3kvUECvnEeaYpOY-WMgw6g">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Element"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_3kvUECvnEeaYpOY-WMgw6g" name="E_NoCodeGen_Element1" memberEnd="_3kxJQCvnEeaYpOY-WMgw6g _3kxwUCvnEeaYpOY-WMgw6g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_3kxJQCvnEeaYpOY-WMgw6g" name="extension_NoCodeGen" type="_xUTQwCvnEeaYpOY-WMgw6g" aggregation="composite" association="_3kvUECvnEeaYpOY-WMgw6g"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_ezeagIrJEeat8a5HiKvSeg" name="MavenProject">
+      <generalization xmi:type="uml:Generalization" xmi:id="_pp1zoLF3EeaECavyT4ZIdQ" general="_YmGwQBbAEearhdjjJ6cVzQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_uOFuYIrJEeat8a5HiKvSeg" name="groupId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_ukli0IrJEeat8a5HiKvSeg" name="artifactId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_u63U0IrJEeat8a5HiKvSeg" name="version">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FAlg4IrtEeawRY7Kk_fDXQ" name="archeType" type="_BVBVcIrqEeawRY7Kk_fDXQ"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_1bp_0IxfEeaOauF9JIo_Gw" name="dependencies" type="_I1EhAIxfEeaOauF9JIo_Gw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_5GeZ0IxhEeaOauF9JIo_Gw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_5Gox4IxhEeaOauF9JIo_Gw" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_FFlPIIxtEeaOauF9JIo_Gw" name="parent" type="_gi7xkIxsEeaOauF9JIo_Gw"/>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_EMucQJtaEeatqKwg1x5n1Q" name="properties" type="_UCA58JtaEeatqKwg1x5n1Q">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WxbmMJtdEeatqKwg1x5n1Q"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WxlXMJtdEeatqKwg1x5n1Q" value="*"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_A5dlAMLIEeafnp9_6s3n2g" name="base_Package" association="_A5W3UMLIEeafnp9_6s3n2g">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Package"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_BVBVcIrqEeawRY7Kk_fDXQ" name="ArcheType">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_RK5pAIrqEeawRY7Kk_fDXQ" name="groupId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Rn68MIrqEeawRY7Kk_fDXQ" name="artifactId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_SD4fcIrqEeawRY7Kk_fDXQ" name="version">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_SzW0kIrqEeawRY7Kk_fDXQ" name="repository">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wfpzcIrsEeawRY7Kk_fDXQ" name="base_Class" association="_wfhQkIrsEeawRY7Kk_fDXQ">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_wfhQkIrsEeawRY7Kk_fDXQ" name="E_ArcheType_Class1" memberEnd="_wfn-QIrsEeawRY7Kk_fDXQ _wfpzcIrsEeawRY7Kk_fDXQ">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_wfn-QIrsEeawRY7Kk_fDXQ" name="extension_ArcheType" type="_BVBVcIrqEeawRY7Kk_fDXQ" aggregation="composite" association="_wfhQkIrsEeawRY7Kk_fDXQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_I1EhAIxfEeaOauF9JIo_Gw" name="MavenDependency">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Z03C8IxfEeaOauF9JIo_Gw" name="groupId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_aTPoEIxfEeaOauF9JIo_Gw" name="artifactId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_avvW0IxfEeaOauF9JIo_Gw" name="version">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_wNpp4IxfEeaOauF9JIo_Gw" name="base_Class" association="_wNf44IxfEeaOauF9JIo_Gw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_gOMzUI6_EeaOauF9JIo_Gw" name="exclusions" type="_D2ZQQI6_EeaOauF9JIo_Gw">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_0hjF0I7BEeaOauF9JIo_Gw"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_0hmwMI7BEeaOauF9JIo_Gw" value="*"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_wNf44IxfEeaOauF9JIo_Gw" name="E_MavenDependency_Class1" memberEnd="_wNmmkIxfEeaOauF9JIo_Gw _wNpp4IxfEeaOauF9JIo_Gw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_wNmmkIxfEeaOauF9JIo_Gw" name="extension_MavenDependency" type="_I1EhAIxfEeaOauF9JIo_Gw" aggregation="composite" association="_wNf44IxfEeaOauF9JIo_Gw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_gi7xkIxsEeaOauF9JIo_Gw" name="ParentArtifact">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_qB_F8IxsEeaOauF9JIo_Gw" name="groupId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_qmGfoIxsEeaOauF9JIo_Gw" name="artifactId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_rAlcMIxsEeaOauF9JIo_Gw" name="version">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_9gmawIxsEeaOauF9JIo_Gw" name="base_Class" association="_9gj-gIxsEeaOauF9JIo_Gw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_9gj-gIxsEeaOauF9JIo_Gw" name="E_ParentArtifact_Class1" memberEnd="_9glMoIxsEeaOauF9JIo_Gw _9gmawIxsEeaOauF9JIo_Gw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_9glMoIxsEeaOauF9JIo_Gw" name="extension_ParentArtifact" type="_gi7xkIxsEeaOauF9JIo_Gw" aggregation="composite" association="_9gj-gIxsEeaOauF9JIo_Gw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_D2ZQQI6_EeaOauF9JIo_Gw" name="ExcludedDependency">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_NvrpkI6_EeaOauF9JIo_Gw" name="groupId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_OWaSYI6_EeaOauF9JIo_Gw" name="artifactId">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_V1ViEI6_EeaOauF9JIo_Gw" name="base_Class" association="_V1UT8I6_EeaOauF9JIo_Gw">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_V1UT8I6_EeaOauF9JIo_Gw" name="E_ExcludedDependency_Class1" memberEnd="_V1U7AI6_EeaOauF9JIo_Gw _V1ViEI6_EeaOauF9JIo_Gw">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_V1U7AI6_EeaOauF9JIo_Gw" name="extension_ExcludedDependency" type="_D2ZQQI6_EeaOauF9JIo_Gw" aggregation="composite" association="_V1UT8I6_EeaOauF9JIo_Gw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Stereotype" xmi:id="_UCA58JtaEeatqKwg1x5n1Q" name="Property">
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_WcnUIJtaEeatqKwg1x5n1Q" name="name">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_Zten8JtaEeatqKwg1x5n1Q" name="value">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:type="uml:Property" xmi:id="_q60dsZtaEeatqKwg1x5n1Q" name="base_Class" association="_q6qssJtaEeatqKwg1x5n1Q">
+        <type xmi:type="uml:Class" href="pathmap://UML_METAMODELS/UML.metamodel.uml#Class"/>
+      </ownedAttribute>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_q6qssJtaEeatqKwg1x5n1Q" name="E_Property_Class1" memberEnd="_q60dsJtaEeatqKwg1x5n1Q _q60dsZtaEeatqKwg1x5n1Q">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_q60dsJtaEeatqKwg1x5n1Q" name="extension_Property" type="_UCA58JtaEeatqKwg1x5n1Q" aggregation="composite" association="_q6qssJtaEeatqKwg1x5n1Q"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Extension" xmi:id="_A5W3UMLIEeafnp9_6s3n2g" name="E_MavenProject_Package1" memberEnd="_A5cW4MLIEeafnp9_6s3n2g _A5dlAMLIEeafnp9_6s3n2g">
+      <ownedEnd xmi:type="uml:ExtensionEnd" xmi:id="_A5cW4MLIEeafnp9_6s3n2g" name="extension_MavenProject" type="_ezeagIrJEeat8a5HiKvSeg" aggregation="composite" association="_A5W3UMLIEeafnp9_6s3n2g"/>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_QvyJsBa_EearhdjjJ6cVzQ">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Qv1NABa_EearhdjjJ6cVzQ" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Ecore.profile.uml#_z1OFcHjqEdy8S4Cr8Rc_NA"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
+    </profileApplication>
+  </uml:Profile>
+  <Ecore:EPackage xmi:id="_RPiAwBa_EearhdjjJ6cVzQ" base_Package="_fPDsIBa-EearhdjjJ6cVzQ" packageName="Codegen" nsPrefix="Codegen" nsURI="http://www.eclipse.org/papyrus/Codegen/1" prefix="Codegen"/>
+</xmi:XMI>
