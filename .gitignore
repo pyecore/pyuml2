@@ -92,5 +92,8 @@ ENV/
 # Emacs tmp files
 *~
 
+# Pytest/Tox cache folder
+.pytest_cache/
+
 # Experiments
 experiment*.*
