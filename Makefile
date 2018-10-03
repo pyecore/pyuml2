@@ -10,3 +10,6 @@ standard:
 
 uml:
 	python generator/uml_generator.py
+
+sysml:
+	python generator/sysml_generator.py

@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sysml14" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML"
+    nsPrefix="SysML">
+  <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+    <details key="originalName" value="SysML"/>
+  </eAnnotations>
+  <eClassifiers xsi:type="ecore:EEnum" name="Dummy"/>
+  <eSubpackages name="activities" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Activities"
+      nsPrefix="Activities">
+    <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details key="originalName" value="Activities"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Continuous" eSuperTypes="#//activities/Rate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            Continuous rate is a special case of rate of flow (see Rate) where the increment of time between items approaches zero. It is intended to represent continuous flows that may correspond to water flowing through a pipe, a time continuous signal, or continuous energy flow. It is independent from UML streaming. A streaming parameter may or may not apply to continuous flow, and a continuous flow may or may not apply to streaming parameters.&#xA;          "/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Rate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            When the «rate» stereotype is applied to an activity edge, it specifies the expected value of the number of objects and values that traverse the edge per time interval, that is, the expected value rate at which they leave the source node and arrive at the target node. It does not refer to the rate at which a value changes over time. When the stereotype is applied to a parameter, the parameter must be streaming, and the stereotype gives the number of objects or values that flow in or out of the parameter per time interval while the behavior or operation is executing. Streaming is a characteristic of UML behavior parameters that supports the input and output of items while a behavior is executing, rather than only when the behavior starts and stops. The flow may be continuous or discrete. The «rate» stereotype has a rate property of type InstanceSpecification. The values of this property must be instances of classifiers stereotyped by «valueType» or «distributionDefinition». In particular, the denominator for units used in the rate property must be time units.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ActivityEdge" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ObjectNode" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ObjectNode"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Parameter" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Parameter"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="rate" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ControlOperator">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A control operator is a behavior that is intended to represent an arbitrarily complex logical operator that can be used to enable and disable other actions. When this stereotype is applied to behaviors, the behavior takes control values as inputs or provides them as outputs, that is, it treats control as data. When this stereotype is not applied, the behavior may not have a parameter typed by ControlValue. This stereotype also applies to operations with the same semantics.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Behavior" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Behavior"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Operation" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Discrete" eSuperTypes="#//activities/Rate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Discrete rate is a special case of rate of flow (see Rate) where the increment of time between items is non-zero."/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NoBuffer">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            When this stereotype is applied to object nodes, tokens arriving at the node are discarded if they are refused by outgoing edges, or refused by actions for object nodes that are input pins. This is typically used with fast or continuously flowing data values, to prevent buffer overrun, or to model transient values, such as electrical signals. For object nodes that are the target of continuous flows, «nobuffer» and «overwrite» have the same effect. The stereotype does not override UML token offering semantics; it just indicates what happens to the token when it is accepted. When the stereotype is not applied, the semantics are as in UML, specifically, tokens arriving at an object node that are refused by outgoing edges, or action for input pins, are held until they can leave the object node.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ObjectNode" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ObjectNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Optional">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            When the «optional» stereotype is applied to parameters, the lower multiplicity must be equal to zero. This means the parameter is not required to have a value for the activity or any behavior to begin or end execution. Otherwise, the lower multiplicity must be greater than zero, which is called “required.”&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Parameter" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Parameter"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Overwrite">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            When the «overwrite» stereotype is applied to object nodes, a token arriving at a full object node replaces the ones already there (a full object node has as many tokens as allowed by its upper bound). This is typically used on an input pin with an upper bound of 1 to ensure that stale data is overridden at an input pin. For upper bounds greater than one, the token replaced is the one that would be the last to be selected according to the ordering kind for the node. For FIFO ordering, this is the most recently added token, for LIFO it is the least recently added token. A null token removes all the tokens already there. The number of tokens replaced is equal to the weight of the incoming edge, which defaults to 1. For object nodes that are the target of continuous flows, «overwrite» and «nobuffer» have the same effect. The stereotype does not override UML token offering semantics, just indicates what happens to the token when it is accepted. When the stereotype is not applied, the semantics is as in UML, specifically, tokens arriving at object nodes do not replace ones that are already there.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ObjectNode" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ObjectNode"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Probability">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            When the «probability» stereotype is applied to edges coming out of decision nodes and object nodes, it provides an expression for the probability that the edge will be traversed. These must be between zero and one inclusive, and add up to one for edges with same source at the time the probabilities are used.&#xA;When the «probability» stereotype is applied to output parameter sets, it gives the probability the parameter set will be given values at runtime. These must be between zero and one inclusive, and add up to one for output parameter sets of the same behavior at the time the probabilities are used.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ActivityEdge" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ActivityEdge"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ParameterSet" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ParameterSet"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="probability" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ValueSpecification"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="allocations" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Allocations"
+      nsPrefix="Allocations">
+    <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details key="originalName" value="Allocations"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Allocate" eSuperTypes="#//blocks/DirectedRelationshipPropertyPath">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            Allocate is a dependency based on UML::abstraction. It is a mechanism for associating elements of different types, or in different hierarchies, at an abstract level. Allocate is used for assessing user model consistency and directing future design activity. It is expected that an «allocate» relationship between model elements is a precursor to a more concrete relationship between the elements, their properties, operations, attributes, or sub-classes.&#xA;          "/>
+      </eAnnotations>
+      <eOperations name="getAllocatedFrom" ordered="false" lowerBound="1">
+        <eParameters name="ref" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+        <eParameters name="result" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+      </eOperations>
+      <eOperations name="getAllocatedTo" ordered="false" lowerBound="1">
+        <eParameters name="ref" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+        <eParameters name="result" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Abstraction" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Abstraction"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AllocateActivityPartition">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="AllocateActivityPartition is used to depict an «allocate» relationship on an Activity diagram. The AllocateActivityPartition is a standard UML2::ActivityPartition, with modified constraints as stated in the paragraph below."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ActivityPartition"
+          ordered="false" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ActivityPartition"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="blocks" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Blocks"
+      nsPrefix="Blocks">
+    <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details key="originalName" value="Blocks"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="AdjunctProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            The AdjunctProperty stereotype can be applied to properties to constrain their values to the values of connectors typed by association blocks, call actions, object nodes, variables, or parameters, interaction uses, and submachine states.  The values of connectors typed by association blocks are the instances of the association block typing a connector in the block having the stereotyped property.  The values of call actions are the executions of behaviors invoked by the behavior having the call action and the stereotyped property (see Subclause 11.3.1.1.1 for more about this use of the stereotype).  The values of object nodes are the values of tokens in the object nodes of the behavior having the stereotyped property (see Subclause 11.3.1.4.1 for more about this use of the stereotype).  The values of variables are those assigned by executions of activities that have the stereotyped property.  The values of parameters are those assigned by executions of behaviors that have the stereotyped property.  The keyword «adjunct» before a property name indicates the property is stereotyped by AdjunctProperty.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="principal" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Element">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Gives the element that determines the values of the property. Must be a connector, call action, object node, variable, or parameter."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BindingConnector">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A Binding Connector is a connector which specifies that the properties at both ends of the connector have equal values. If the properties at the ends of a binding connector are typed by a DataType or ValueType, the connector specifies that the instances of the properties must hold equal values, recursively through any nested properties within the connected properties. If the properties at the ends of a binding connector are typed by a Block, the connector specifies that the instances of the properties must refer to the same block instance. As with any connector owned by a SysML Block, the ends of a binding connector may be nested within a multi-level path of properties accessible from the owning block. The NestedConnectorEnd stereotype is used to represent such nested ends just as for nested ends of other SysML connectors.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Connector" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Connector"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Block">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A Block is a modular unit that describes the structure of a system or element. It may include both structural and behavioral features, such as properties and operations, that represent the state of the system and behavior that the system may exhibit. Some of these properties may hold parts of a system, which can also be described by blocks. A block may include a structure of connectors between its properties to indicate how its parts or other properties relate to one another. SysML blocks provide a general-purpose capability to describe the architecture of a system. They provide the ability to represent a system hierarchy, in which a system at one level is composed of systems at a more basic level. They can describe not only the connectivity relationships between the systems at any level, but also quantitative values or other information about a system. SysML does not restrict the kind of system or system element that may be described by a block. Any reusable form of description that may be applied to a system or a set of system characteristics may be described by a block. Such reusable descriptions, for example, may be applied to purely conceptual aspects of a system design, such as relationships that hold between parts or properties of a system. Connectors owned by SysML blocks may be used to define relationships between parts or other properties of the same containing block. The type of a connector or its connected ends may specify the semantic interpretation of a specific connector.&#xA;          "/>
+      </eAnnotations>
+      <eOperations name="getReferences" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="@papyrus.req org.eclipse.papyrus.sysml14#REQ-SYSML14-Block-References"/>
+        </eAnnotations>
+      </eOperations>
+      <eOperations name="getParts" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eOperations name="getFlowProperties" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEncapsulated" ordered="false"
+          eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="&#xA;              If true, then the block is treated as a black box; a part typed by this black box can only be connected via its ports or directly to its outer boundary. If false, or if a value is not present, then connections can be established to elements of its internal structure via deep-nested connector ends.&#xA;            "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="BoundReference" eSuperTypes="#//blocks/EndPathMultiplicity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="bindingPath" unique="false"
+          lowerBound="1" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Gives the propertyPath of the NestedConnectorEnd applied, if any, to the boundEnd, appended to the role of the boundEnd. "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="boundEnd" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ConnectorEnd">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Gives a connector end of a binding connector opposite to the end linked to the stereotyped property, or linked to a property that generalizes the stereotyped one through redefinition."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="EndPathMultiplicity">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lower" ordered="false"
+          eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+          defaultValueLiteral="0">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Gives the minimum number of values of the property at the end of the related bindingPath, for each object reached by navigation along the bindingPath from an instance of the block owning the property to which EndPathMultiplicity is applied"/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="upper" ordered="false"
+          eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//UnlimitedNatural"
+          defaultValueLiteral="-1">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Gives the maximum number of values of the property at the end of the related bindingPath, for each object reached by navigation along the bindingPath from an instance of the block owning the property to which EndPathMultiplicity is applied."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ClassifierBehaviorProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            The ClassifierBehaviorProperty stereotype can be applied to properties to constrain their values to be the executions of classifier behaviors.  The value of properties with ClassifierBehaviorProperty  applied are the executions of classifier behaviors invoked by instantiation of the block that owns the stereotyped property or one of its specializations.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ConnectorProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            Connectors can be typed by association classes that are stereotyped by Block (association blocks). These connectors specify instances (links) of the association block that exist due to instantiation of the block owning or inheriting the connector. The value of a connector property on an instance of a block will be exactly those link objects that are instances of the association block typing the connector referred to by the connector property.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="connector" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Connector">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A connector of the block owning the property on which the stereotype is applied."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DistributedProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            DistributedProperty is a stereotype of Property used to apply a probability distribution to the values of the property. Specific distributions should be defined as subclasses of the DistributedProperty stereotype with the operands of the distributions represented by properties of those stereotype subclasses.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ElementPropertyPath" abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Element" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Element"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="propertyPath" unique="false"
+          lowerBound="1" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="&#xA;              The propertyPath list of the NestedConnectorEnd stereotype must identify a path of containing properties that identify the connected property in the context of the block that owns the connector. The ordering of properties is from a property of the block that owns the connector, through a property of each intermediate block that types the preceding property, until a property is reached that contains a connector end property within its type. The connector end property is not included in the propertyPath list, but instead is held by the role property of the UML ConnectorEnd metaclass.&#xA;            "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="NestedConnectorEnd" eSuperTypes="#//blocks/ElementPropertyPath">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The NestedConnectorEnd stereotype of UML ConnectorEnd extends a UML ConnectorEnd so that the connected property may be identified by a multi-level path of accessible properties from the block that owns the connector."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ConnectorEnd" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ConnectorEnd"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ParticipantProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            The Block stereotype extends Class, so it can be applied to any specialization of Class, including Association Classes. These are informally called “association blocks.” An association block can own properties and connectors, like any other block. Each instance of an association block can link together instances of the end classifiers of the association. To refer to linked objects and values of an instance of an association block, it is necessary for the modeler to specify which (participant) properties of the association block identify the instances being linked at which end of the association. The value of a participant property on an instance (link) of the association block is the value or object at the end of the link corresponding to this end of the association.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="end" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A member end of the association block owning the property on which the stereotype is applied."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="PropertySpecificType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The PropertySpecificType stereotype should automatically be applied to the classifier which types a property with a propertyspecific type. This classifier can contain definitions of new or redefined features which extend the original classifier referenced by the property-specific type."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Classifier" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Classifier"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ValueType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A ValueType defines types of values that may be used to express information about a system, but cannot be identified as the target of any reference. Since a value cannot be identified except by means of the value itself, each such value within a model is independent of any other, unless other forms of constraints are imposed. Value types may be used to type properties, operation parameters, or potentially other elements within SysML. SysML defines ValueType as a stereotype of UML DataType to establish a more neutral term for system values that may never be given a concrete data representation.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_DataType" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DataType"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="quantityKind" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="&#xA;              A kind of quantity that may be stated by means of defined units, as identified by an instance of the Dimension stereotype. A value type may optionally specify a dimension without any unit. Such a value has no concrete representation, but may be used to express a value in an abstract form independent of any specific units.&#xA;            "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="unit" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//InstanceSpecification">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="A quantity in terms of which the magnitudes of other quantities that have the same dimension can be stated, as identified by an instance of the Unit stereotype."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DirectedRelationshipPropertyPath"
+        abstract="true">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_DirectedRelationship"
+          ordered="false" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//DirectedRelationship"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sourceContext" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Classifier"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="sourcePropertyPath" unique="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetContext" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Classifier"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetPropertyPath" unique="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="constraintblocks" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML/ConstraintBlocks"
+      nsPrefix="ConstraintBlocks">
+    <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details key="originalName" value="ConstraintBlocks"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="ConstraintBlock" eSuperTypes="#//blocks/Block">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A constraint block is a block that packages the statement of a constraint so it may be applied in a reusable way to constrain properties of other blocks. A constraint block typically defines one or more constraint parameters, which are bound to properties of other blocks in a surrounding context where the constraint is used. Binding connectors, as defined in Chapter 8: Blocks, are used to bind each parameter of the constraint block to a property in the surrounding context. All properties of a constraint block are constraint parameters, with the exception of constraint properties that hold internally nested usages of other constraint blocks.&#xA;          "/>
+      </eAnnotations>
+      <eOperations name="getParameters" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="deprecatedelements" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML/DeprecatedElements"
+      nsPrefix="DeprecatedElements">
+    <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details key="originalName" value="DeprecatedElements"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="FlowPort">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A FlowPort is an interaction point through which input and/or output of items such as data, material, or energy may flow. This enables the owning block to declare which items it may exchange with its environment and the interaction points through which the exchange is made. We distinguish between atomic flow port and a nonatomic flow port. Atomic flow ports relay items that are classified by a single Block, ValueType, DataType, or Signal classifier. A nonatomic flow port relays items of several types as specified by a FlowSpecification. Flow ports and associated flow specifications define “what can flow” between the block and its environment, whereas item flows specify “what does flow” in a specific usage context. Flow ports relay items to their owning block or to a connector that connects them with their owner’s internal parts (internal connector).&#xA;          "/>
+      </eAnnotations>
+      <eOperations name="getIcon" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Image"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Port" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" ordered="false"
+          lowerBound="1" eType="#//portsandflows/FlowDirection" defaultValueLiteral="inout">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="&#xA;              Indicates the direction in which an atomic flow port relays its items. If the direction is set to “in,” then the items are relayed from an external connector via the flow port into the flow port’s owner (or one of its parts). If the direction is set to “out,” then the items are relayed from the flow port’s owner, via the flow port, through an external connector attached to the flow port. If the direction is set to “inout,” then items can flow both ways. By default, the value is inout.&#xA;            "/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="isAtomic" ordered="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Boolean"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="This is a derived attribute (derived from the flow port’s type). For a flow port typed by a flow specification the value of this attribute is False, otherwise the value is True."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FlowSpecification">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A FlowSpecification specifies inputs and outputs as a set of flow properties. A flow specification is used by flow ports to specify what items can flow via the port."/>
+      </eAnnotations>
+      <eOperations name="getFlowProperties" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Interface" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Interface"/>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="portsandflows" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML/PortsAndFlows"
+      nsPrefix="PortsAndFlows">
+    <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details key="originalName" value="PortsAndFlows"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EEnum" name="FeatureDirection">
+      <eLiterals name="provided"/>
+      <eLiterals name="providedRequired" value="1"/>
+      <eLiterals name="required" value="2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="AcceptChangeStructuralFeatureEventAction">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_AcceptEventAction"
+          ordered="false" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//AcceptEventAction"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ChangeStructuralFeatureEvent">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_ChangeEvent" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//ChangeEvent"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="structuralFeature" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//StructuralFeature"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DirectedFeature">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Feature" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Feature"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="featureDirection" ordered="false"
+          lowerBound="1" eType="#//portsandflows/FeatureDirection"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FlowProperty">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A FlowProperty signifies a single flow element that can flow to/from a block. A flow property’s values are either received from or transmitted to an external block. Flow properties are defined directly on blocks or flow specifications that are those specifications which type the flow ports. Flow properties enable item flows across connectors connecting parts of the corresponding block types, either directly (in case of the property is defined on the block) or via flowPorts. For Block, Data Type, and Value Type properties, setting an “out” FlowProperty value of a block usage on one end of a connector will result in assigning the same value of an “in” FlowProperty of a block usage at the other end of the connector, provided the flow properties are matched. Flow properties of type Signal imply sending and/or receiving of a signal usage. An “out” FlowProperty of type Signal means that the owning Block may broadcast the signal via connectors and an “in” FlowProperty means that the owning block is able to receive the Signal.&#xA;          "/>
+      </eAnnotations>
+      <eOperations name="getIcon" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Image"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Property" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" ordered="false"
+          lowerBound="1" eType="#//portsandflows/FlowDirection" defaultValueLiteral="inout">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Specifies if the property value is received from an external block (direction=“in”), transmitted to an external Block (direction=“out”) or both (direction=“inout”)."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="FullPort">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Port" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="InterfaceBlock" eSuperTypes="#//blocks/Block"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InvocationOnNestedPortAction" eSuperTypes="#//blocks/ElementPropertyPath">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_InvocationAction"
+          ordered="false" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//InvocationAction"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="onNestedPort" unique="false"
+          lowerBound="1" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ItemFlow">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            An ItemFlow describes the flow of items across a connector or an association. It may constrain the item exchange between blocks, block usages, or flow ports as specified by their flow properties. For example, a pump connected to a tank: the pump has an “out” flow property of type Liquid and the tank has an “in” FlowProperty of type Liquid. To signify that only water flows between the pump and the tank, we can specify an ItemFlow of type Water on the connector.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_InformationFlow"
+          ordered="false" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//InformationFlow"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="itemProperty" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Property">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="An optional property that relates the flowing item to the instances of the connector’s enclosing block. This property is applicable only for item flows assigned to connectors. The multiplicity is zero if the item flow is assigned to an Association."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ProxyPort">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Port" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TriggerOnNestedPort" eSuperTypes="#//blocks/ElementPropertyPath">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Trigger" ordered="false"
+          lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Trigger"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="onNestedPort" unique="false"
+          lowerBound="1" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Port"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="FlowDirection">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="FlowDirection is an enumeration type that defines literals used for specifying input and output directions. FlowDirection is used by flow properties to indicate if a property is an input or an output with respect to its owner."/>
+      </eAnnotations>
+      <eLiterals name="in">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Indicates that the flow property is input to the owning block."/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="inout" value="1">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Indicates that the flow property is both an input and an output of the owning block."/>
+        </eAnnotations>
+      </eLiterals>
+      <eLiterals name="out" value="2">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Indicates that the flow property is an output of the owning block."/>
+        </eAnnotations>
+      </eLiterals>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="modelelements" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML/ModelElements"
+      nsPrefix="ModelElements">
+    <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details key="originalName" value="ModelElements"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Conform">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A Conform relationship is a dependency between a view and a viewpoint. The view conforms to the specified rules and conventions detailed in the viewpoint. Conform is a specialization of the UML dependency, and as with other dependencies the arrow direction points from the (client/source) to the (supplier/target).&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Generalization"
+          ordered="false" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Generalization"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="ElementGroup">
+      <eOperations name="allGroups" ordered="false" lowerBound="1">
+        <eParameters name="e" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Element"/>
+        <eParameters name="result" ordered="false" upperBound="-1" eType="#//modelelements/ElementGroup"/>
+      </eOperations>
+      <eOperations name="criterion" ordered="false" lowerBound="1">
+        <eParameters name="result" ordered="false" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+      </eOperations>
+      <eOperations name="member" ordered="false" lowerBound="1">
+        <eParameters name="result" ordered="false" upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Element"/>
+      </eOperations>
+      <eOperations name="size" ordered="false" lowerBound="1">
+        <eParameters name="result" ordered="false" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"/>
+      </eOperations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Comment" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="criterion" ordered="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"
+          changeable="false" volatile="true" transient="true" derived="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="member" ordered="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Element"
+          changeable="false" volatile="true" transient="true" derived="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" ordered="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="orderedMemeber" upperBound="-1"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Element"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="size" ordered="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//Integer"
+          changeable="false" volatile="true" transient="true" derived="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Expose">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Dependency" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Dependency"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Problem">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A Problem documents a deficiency, limitation, or failure of one or more model elements to satisfy a requirement or need, or other undesired outcome. It may be used to capture problems identified during analysis, design, verification, or manufacture and associate the problem with the relevant model elements. Problem is a stereotype of comment and may be attached to any other model element in the same manner as a comment.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Comment" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Rationale">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A Rationale documents the justification for decisions and the requirements, design, and other decisions. A Rationale can be attached to any model element including relationships. It allows the user, for example, to specify a rationale that may reference more detailed documentation such as a trade study or analysis report. Rationale is a stereotype of comment and may be attached to any other model element in the same manner as a comment.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Comment" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Stakeholder">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Classifier" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Classifier"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="concernList" ordered="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Comment"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="concern" ordered="false"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"
+          changeable="false" volatile="true" transient="true" derived="true"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="View">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A View is a representation of a whole system or subsystem from the perspective of a single viewpoint. Views are allowed to import other elements including other packages and other views that conform to the viewpoint."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="stakeholder" ordered="false"
+          upperBound="-1" eType="#//modelelements/Stakeholder" changeable="false"
+          volatile="true" transient="true" derived="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="viewPoint" ordered="false"
+          lowerBound="1" eType="#//modelelements/Viewpoint" changeable="false" volatile="true"
+          transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The viewpoint for this View, derived from the supplier of the «conform» dependency whose client is this View."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Viewpoint">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A Viewpoint is a specification of the conventions and rules for constructing and using a view for the purpose of addressing a set of stakeholder concerns. The languages and methods for specifying a view may reference languages and methods in another viewpoint. They specify the elements expected to be represented in the view, and may be formally or informally defined. For example, the security viewpoint may require the security requirements, security functional and physical architecture, and security test cases.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="concern" ordered="false"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"
+          changeable="false" volatile="true" transient="true" derived="true"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="concernList" ordered="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Comment">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The interest of the stakeholders."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="language" ordered="false"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The languages used to construct the viewpoint."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="method" ordered="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Behavior"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The methods used to construct the views for this viewpoint."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="presentation" ordered="false"
+          upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="purpose" ordered="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The purpose addresses the stakeholder concerns."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="stakeholder" ordered="false"
+          upperBound="-1" eType="#//modelelements/Stakeholder">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Set of stakeholders."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+  </eSubpackages>
+  <eSubpackages name="requirements" nsURI="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Requirements"
+      nsPrefix="Requirements">
+    <eAnnotations source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <details key="originalName" value="Requirements"/>
+    </eAnnotations>
+    <eClassifiers xsi:type="ecore:EClass" name="Copy" eSuperTypes="#//requirements/Trace">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A Copy relationship is a dependency between a supplier requirement and a client requirement that specifies that the text of the client requirement is a read-only copy of the text of the supplier requirement."/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Trace" eSuperTypes="#//blocks/DirectedRelationshipPropertyPath http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#//Trace">
+      <eOperations name="getTracedFrom" ordered="false" lowerBound="1">
+        <eParameters name="ref" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+        <eParameters name="result" ordered="false" upperBound="-1" eType="#//requirements/Requirement"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Requirement">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A requirement specifies a capability or condition that must (or should) be satisfied. A requirement may specify a function that a system must perform or a performance condition that a system must satisfy. Requirements are used to establish a contract between the customer (or other stakeholder) and those responsible for designing and implementing the system.&#xA;          "/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Class" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Class"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="derived" ordered="false"
+          upperBound="-1" eType="#//requirements/Requirement" changeable="false" volatile="true"
+          transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Derived from all requirements that are the client of a «deriveReqt» relationship for which this requirement is a supplier."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="derivedFrom" ordered="false"
+          upperBound="-1" eType="#//requirements/Requirement" changeable="false" volatile="true"
+          transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Derived from all requirements that are the supplier of a «deriveReqt» relationship for which this requirement is a client."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" ordered="false" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"
+          defaultValueLiteral="">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The unique id of the requirement."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="master" ordered="false"
+          eType="#//requirements/Requirement" changeable="false" volatile="true" transient="true"
+          derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="This is a derived property that lists the master requirement for this slave requirement. The master attribute is derived from the supplier of the Copy dependency that has this requirement as the slave."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="refinedBy" ordered="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Derived from all elements that are the client of a «refine» relationship for which this requirement is a supplier."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="satisfiedBy" ordered="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Derived from all elements that are the client of a «satisfy» relationship for which this requirement is a supplier."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" ordered="false"
+          lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/uml2/5.0.0/Types#//String"
+          defaultValueLiteral="">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The textual representation or a reference to the textual representation of the requirement."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="tracedTo" ordered="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Derived from all elements that are the client of a «trace» relationship for which this requirement is a supplier."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="verifiedBy" ordered="false"
+          upperBound="-1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"
+          changeable="false" volatile="true" transient="true" derived="true">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="Derived from all elements that are the client of a «verify» relationship for which this requirement is a supplier."/>
+        </eAnnotations>
+      </eStructuralFeatures>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="DeriveReqt" eSuperTypes="#//requirements/Trace">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="&#xA;            A DeriveReqt relationship is a dependency between two requirements in which a client requirement can be derived from the supplier requirement. As with other dependencies, the arrow direction points from the derived (client) requirement to the (supplier) requirement from which it is derived.&#xA;          "/>
+      </eAnnotations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Refine" eSuperTypes="#//blocks/DirectedRelationshipPropertyPath http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#//Refine">
+      <eOperations name="getRefines" ordered="false" lowerBound="1">
+        <eParameters name="ref" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+        <eParameters name="result" ordered="false" upperBound="-1" eType="#//requirements/Requirement"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Satisfy" eSuperTypes="#//requirements/Trace">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A Satisfy relationship is a dependency between a requirement and a model element that fulfills the requirement. As with other dependencies, the arrow direction points from the satisfying (client) model element to the (supplier) requirement that is satisfied."/>
+      </eAnnotations>
+      <eOperations name="getSatisfies" ordered="false" lowerBound="1">
+        <eParameters name="ref" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+        <eParameters name="result" ordered="false" upperBound="-1" eType="#//requirements/Requirement"/>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="TestCase">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A test case is a method for verifying a requirement is satisfied."/>
+      </eAnnotations>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Behavior" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Behavior"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="base_Operation" ordered="false"
+          eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//Operation"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Verify" eSuperTypes="#//requirements/Trace">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A Verify relationship is a dependency between a requirement and a test case or other model element that can determine whether a system fulfills the requirement. As with other dependencies, the arrow direction points from the (client) element to the (supplier) requirement."/>
+      </eAnnotations>
+      <eOperations name="getVerifies" ordered="false" lowerBound="1">
+        <eParameters name="ref" ordered="false" lowerBound="1" eType="ecore:EClass http://www.eclipse.org/uml2/5.0.0/UML#//NamedElement"/>
+        <eParameters name="result" ordered="false" upperBound="-1" eType="#//requirements/Requirement"/>
+      </eOperations>
+    </eClassifiers>
+  </eSubpackages>
+</ecore:EPackage>
