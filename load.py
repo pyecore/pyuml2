@@ -1,4 +1,5 @@
 from pyecore.resources import ResourceSet
+from pyuml2 import profile_utils as utils
 import pyuml2.uml as uml
 import pyuml2.types as types
 import pyuml2.standard as standard
@@ -30,9 +31,14 @@ def get_resourceSet():
     for subpackage in sysml14.eSubpackages:
         registry[subpackage.nsURI] = subpackage
 
-    # enable metamodel (URI retro-compatiblity (old model as input)
-    registry['http://www.eclipse.org/papyrus/0.7.0/SysML/Blocks'] = sysml14.blocks
-    registry['http://www.eclipse.org/papyrus/0.7.0/SysML/PortAndFlows'] = sysml14.deprecatedelements
+    # load the tomasys profile and registers the tomasys metamodel
+    # (when a profile is 'defined', it creates a metamodel of the profile)
+    # it also means that the python code of the tomasys metamodel could be
+    # generated. 
+    profile_resource = rset.get_resource('tomasys.profile.uml')
+    profile = profile_resource.contents[0]
+    static = profile.getEAnnotation(utils.UML_20_URI).contents[0]
+    registry[static.nsURI] = static
 
     return rset
 
@@ -66,7 +72,7 @@ def print_stereotype_summary(element):
         print('+- Stereotype', application.eClass.name)
         print('+-- Features:')
         for feature in application.eClass.eStructuralFeatures:
-            print('+---', feature.name, 'of type', feature.eType.name)
+            print('+---', feature.name, 'of type', feature.eType.eClass.name)
             try:
                 print('    `- feature value set to:', application.eGet(feature))
             except NotImplementedError:
@@ -76,7 +82,7 @@ def print_stereotype_summary(element):
 # load the input model
 rset = get_resourceSet()
 
-model_root = rset.get_resource('model.xmi').contents[0]
+model_root = rset.get_resource('ux1_submarine_v01.uml').contents[0]
 
 i = 0
 for x in model_root.eAllContents():

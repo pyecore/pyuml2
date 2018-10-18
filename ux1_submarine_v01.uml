@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Blocks="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Blocks" xmlns:ModelElements="http://www.eclipse.org/papyrus/sysml/1.4/SysML/ModelElements" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:tomasys="http:///schemas/tomasys/_DDT7YLtAEeiX_4bJ7riLSQ/12" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xsi:schemaLocation="http://www.eclipse.org/papyrus/sysml/1.4/SysML/Blocks http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks http://www.eclipse.org/papyrus/sysml/1.4/SysML/ModelElements http://www.eclipse.org/papyrus/sysml/1.4/SysML#//modelelements http:///schemas/tomasys/_DDT7YLtAEeiX_4bJ7riLSQ/12 tomasys.profile.uml#_DDYz4LtAEeiX_4bJ7riLSQ">
+  <uml:Model xmi:id="_QnPKELHiEeiL9tKfQ31fIA" name="ux1_control_arch" URI="">
+    <ownedComment xmi:type="uml:Comment" xmi:id="_GX-McLaSEeibmbzv24Y0uw">
+      <body>Function designs for the submarines movements as reflected in Gonzalo's thesis Tables 5.3 and 5.4 (PDF page 39)</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_27Y_ALqJEeiJqsn3UpdfJg">
+      <body>TODO: create bindings as associations to instances. Follow motor 5 example</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_JuYSkL_dEeiRmt3s1nZ51w">
+      <body>author: Carlos Hernandez c.h.corbato@tudelft.nl
+
+This SysML model with the tomasys profile is a test case using the UNEMIX</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_c4syYL_dEeiRmt3s1nZ51w" annotatedElement="_QnPKELHiEeiL9tKfQ31fIA">
+      <body>One of the Functions of the UNEMIX submarine is moving up</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_Q6amAL_eEeiRmt3s1nZ51w" annotatedElement="_7WK8ALHoEeiL9tKfQ31fIA">
+      <body>This FunctionDesign is one out the the multiple ones that solve the function to move up</body>
+    </ownedComment>
+    <ownedComment xmi:type="uml:Comment" xmi:id="_8-plsL_eEeiRmt3s1nZ51w">
+      <body>grounding or implementation of the Function Design: PropulsionSystem_up_2a
+</body>
+    </ownedComment>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_Q4hHULHiEeiL9tKfQ31fIA">
+      <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+    </packageImport>
+    <packageImport xmi:type="uml:PackageImport" xmi:id="_Q5RVQLHiEeiL9tKfQ31fIA">
+      <importedPackage xmi:type="uml:Package" href="pathmap://SysML14_LIBRARIES/SysML-Standard-Library.uml#SysML.package_packagedElement_Libraries"/>
+    </packageImport>
+    <packagedElement xmi:type="uml:Package" xmi:id="_tzZHAL_fEeiRmt3s1nZ51w" name="ComponentsUNEMIX">
+      <packagedElement xmi:type="uml:Class" xmi:id="_KCa6YLaREeibmbzv24Y0uw" name="Motor1"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_MBeBALaREeibmbzv24Y0uw" name="Motor2"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_O8zwwLaREeibmbzv24Y0uw" name="Motor3"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_PxA04LaREeibmbzv24Y0uw" name="Motor4"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_QdpRYLaREeibmbzv24Y0uw" name="Motor5"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ROSrMLaREeibmbzv24Y0uw" name="Motor6"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_T2KFULaREeibmbzv24Y0uw" name="Motor7"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_UlBWcLaREeibmbzv24Y0uw" name="Motor8"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_EGiY8L_gEeiRmt3s1nZ51w" name="FunctionsUNEMIX">
+      <packagedElement xmi:type="uml:Class" xmi:id="_iZKr4LHoEeiL9tKfQ31fIA" name="MotionControl"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_ValVkLHoEeiL9tKfQ31fIA" name="Navigation"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_sNZmELHoEeiL9tKfQ31fIA" name="Control1"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_vwzbYLHoEeiL9tKfQ31fIA" name="Control2"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_xLpBsLHoEeiL9tKfQ31fIA" name="Nav1"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_z_AhMLHoEeiL9tKfQ31fIA" name="Nav2"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_2cm78LaREeibmbzv24Y0uw" name="Move_down"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_5AT34LHoEeiL9tKfQ31fIA" name="Move_up"/>
+      <packagedElement xmi:type="uml:Class" xmi:id="_7WK8ALHoEeiL9tKfQ31fIA" name="PropulsionSystem_up_2a">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_KiIqMLqMEeiJqsn3UpdfJg" name="motorA" type="_QdpRYLaREeibmbzv24Y0uw" aggregation="composite" association="_R26fYLqMEeiJqsn3UpdfJg">
+          <defaultValue xmi:type="uml:InstanceValue" xmi:id="_1p7LkLqTEeiJqsn3UpdfJg" instance="_InuMELaTEeibmbzv24Y0uw"/>
+        </ownedAttribute>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_7bAdkLqMEeiJqsn3UpdfJg" name="motorB" type="_T2KFULaREeibmbzv24Y0uw" aggregation="composite" association="_DSQGoLqNEeiJqsn3UpdfJg">
+          <defaultValue xmi:type="uml:InstanceValue" xmi:id="_k6Ct4LqTEeiJqsn3UpdfJg" instance="_F8qUALaTEeibmbzv24Y0uw"/>
+        </ownedAttribute>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_wJ5LQLaSEeibmbzv24Y0uw" name="PropulsionSystem_up_2b">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_-c2j4L_wEeiRmt3s1nZ51w" name="motorA" type="_ROSrMLaREeibmbzv24Y0uw" aggregation="composite" association="_KszSkL_xEeiRmt3s1nZ51w"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_NJrksL_xEeiRmt3s1nZ51w" name="motorB" type="_UlBWcLaREeibmbzv24Y0uw" aggregation="composite" association="_O_kvUL_xEeiRmt3s1nZ51w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Class" xmi:id="_y5j2gLaSEeibmbzv24Y0uw" name="Propulsion_System_up_3a">
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_dJrBEL_yEeiRmt3s1nZ51w" name="motorA" type="_QdpRYLaREeibmbzv24Y0uw" aggregation="composite" association="_fL1GEL_yEeiRmt3s1nZ51w"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_hL-Y4L_yEeiRmt3s1nZ51w" name="motorB" type="_ROSrMLaREeibmbzv24Y0uw" aggregation="composite" association="_38wMkL_zEeiRmt3s1nZ51w"/>
+        <ownedAttribute xmi:type="uml:Property" xmi:id="_7JDwgL_zEeiRmt3s1nZ51w" name="motorC" type="_T2KFULaREeibmbzv24Y0uw" aggregation="composite" association="_9kWHML_zEeiRmt3s1nZ51w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Package" xmi:id="_QAYUwL_gEeiRmt3s1nZ51w" name="Specifications">
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_F8qUALaTEeibmbzv24Y0uw" name="motorA_propulsionSystem_up_2a"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_InuMELaTEeibmbzv24Y0uw" name="motorB_propulsionSystem_up_2a"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_D08SMLaWEeibmbzv24Y0uw" name="motorA_propulsionSystem_up_2b"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_IhdrsLaWEeibmbzv24Y0uw" name="motorB_propulsionSystem_up_2b"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_CGp5gLaYEeibmbzv24Y0uw" name="motorA_propulsionSystem_up_3a"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_GNImsLaYEeibmbzv24Y0uw" name="motorB_propulsionSystem_up_3a"/>
+        <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_t073ULaYEeibmbzv24Y0uw" name="motorC_propulsionSystem_up_3a"/>
+        <packagedElement xmi:type="uml:Association" xmi:id="_R26fYLqMEeiJqsn3UpdfJg" memberEnd="_KiIqMLqMEeiJqsn3UpdfJg _R2_-8LqMEeiJqsn3UpdfJg">
+          <ownedEnd xmi:type="uml:Property" xmi:id="_R2_-8LqMEeiJqsn3UpdfJg" type="_7WK8ALHoEeiL9tKfQ31fIA" association="_R26fYLqMEeiJqsn3UpdfJg"/>
+        </packagedElement>
+        <packagedElement xmi:type="uml:Association" xmi:id="_DSQGoLqNEeiJqsn3UpdfJg" memberEnd="_7bAdkLqMEeiJqsn3UpdfJg _DSU_ILqNEeiJqsn3UpdfJg">
+          <ownedEnd xmi:type="uml:Property" xmi:id="_DSU_ILqNEeiJqsn3UpdfJg" type="_7WK8ALHoEeiL9tKfQ31fIA" association="_DSQGoLqNEeiJqsn3UpdfJg"/>
+        </packagedElement>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_KszSkL_xEeiRmt3s1nZ51w" memberEnd="_-c2j4L_wEeiRmt3s1nZ51w _Ks3kAL_xEeiRmt3s1nZ51w">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_Ks3kAL_xEeiRmt3s1nZ51w" type="_wJ5LQLaSEeibmbzv24Y0uw" association="_KszSkL_xEeiRmt3s1nZ51w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_O_kvUL_xEeiRmt3s1nZ51w" memberEnd="_NJrksL_xEeiRmt3s1nZ51w _O_sEEL_xEeiRmt3s1nZ51w">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_O_sEEL_xEeiRmt3s1nZ51w" type="_wJ5LQLaSEeibmbzv24Y0uw" association="_O_kvUL_xEeiRmt3s1nZ51w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_fL1GEL_yEeiRmt3s1nZ51w" memberEnd="_dJrBEL_yEeiRmt3s1nZ51w _fL3iUL_yEeiRmt3s1nZ51w">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_fL3iUL_yEeiRmt3s1nZ51w" type="_y5j2gLaSEeibmbzv24Y0uw" association="_fL1GEL_yEeiRmt3s1nZ51w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_38wMkL_zEeiRmt3s1nZ51w" memberEnd="_hL-Y4L_yEeiRmt3s1nZ51w _38yo0L_zEeiRmt3s1nZ51w">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_38yo0L_zEeiRmt3s1nZ51w" type="_y5j2gLaSEeibmbzv24Y0uw" association="_38wMkL_zEeiRmt3s1nZ51w"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Association" xmi:id="_9kWHML_zEeiRmt3s1nZ51w" memberEnd="_7JDwgL_zEeiRmt3s1nZ51w _9kYjcL_zEeiRmt3s1nZ51w">
+        <ownedEnd xmi:type="uml:Property" xmi:id="_9kYjcL_zEeiRmt3s1nZ51w" type="_y5j2gLaSEeibmbzv24Y0uw" association="_9kWHML_zEeiRmt3s1nZ51w"/>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_XyY4gL_gEeiRmt3s1nZ51w" name="RuntimeConfigurations">
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_NQt6ALafEeibmbzv24Y0uw" name="fg_propulsionsystem_2a" classifier="_7WK8ALHoEeiL9tKfQ31fIA">
+        <slot xmi:type="uml:Slot" xmi:id="_Lg83ULqWEeiJqsn3UpdfJg" definingFeature="_KiIqMLqMEeiJqsn3UpdfJg">
+          <value xmi:type="uml:InstanceValue" xmi:id="_SZk8ALqWEeiJqsn3UpdfJg" instance="_i2B1kLafEeibmbzv24Y0uw"/>
+        </slot>
+        <slot xmi:type="uml:Slot" xmi:id="_ccytYLqWEeiJqsn3UpdfJg" definingFeature="_7bAdkLqMEeiJqsn3UpdfJg">
+          <value xmi:type="uml:InstanceValue" xmi:id="_nFcHELqWEeiJqsn3UpdfJg" instance="_lh9QULafEeibmbzv24Y0uw"/>
+        </slot>
+      </packagedElement>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_Tlr4ALafEeibmbzv24Y0uw" name="move_up"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_i2B1kLafEeibmbzv24Y0uw" name="motor5"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_kjFNQLafEeibmbzv24Y0uw" name="motor6"/>
+      <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_lh9QULafEeibmbzv24Y0uw" name="motor7">
+        <slot xmi:type="uml:Slot" xmi:id="_8d8uILajEeibmbzv24Y0uw"/>
+      </packagedElement>
+    </packagedElement>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4EbYLHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4M-QLHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4Sd0LHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4TE4LHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//activities"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Activities"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4X9YLHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4YkcLHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//allocations"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Allocations"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4ZLgLHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4ZLgbHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//blocks"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Blocks"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4ZykLHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4ZykbHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//constraintblocks"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ConstraintBlocks"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4bAsLHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4bAsbHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//deprecatedelements"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_DeprecatedElements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4bnwLHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4bnwbHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//modelelements"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_ModelElements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4cO0LHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4c14LHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//portsandflows"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Ports_u0026Flows"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4dc8LHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4dc8bHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/papyrus/sysml/1.4/SysML#//requirements"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://SysML14_PROFILES/SysML.profile.uml#SysML.package_packagedElement_Requirements"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_Q4erELHiEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_Q4fSILHiEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="http://www.eclipse.org/uml2/5.0.0/UML/Profile/Standard#/"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+    </profileApplication>
+    <profileApplication xmi:type="uml:ProfileApplication" xmi:id="_SjNf0LHoEeiL9tKfQ31fIA">
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_GjJfULtAEeiX_4bJ7riLSQ" source="PapyrusVersion">
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GjJfUbtAEeiX_4bJ7riLSQ" key="Version" value="0.1.0"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GjJfUrtAEeiX_4bJ7riLSQ" key="Comment" value="as discussed over telco 2018 09 16"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GjJfU7tAEeiX_4bJ7riLSQ" key="Copyright" value=""/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GjJfVLtAEeiX_4bJ7riLSQ" key="Date" value="2018-09-18"/>
+        <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_GjJfVbtAEeiX_4bJ7riLSQ" key="Author" value="Carlos Hernandez"/>
+      </eAnnotations>
+      <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_SjOG4LHoEeiL9tKfQ31fIA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+        <references xmi:type="ecore:EPackage" href="tomasys.profile.uml#_DDYz4LtAEeiX_4bJ7riLSQ"/>
+      </eAnnotations>
+      <appliedProfile xmi:type="uml:Profile" href="tomasys.profile.uml#_TI6AILHjEeiL9tKfQ31fIA"/>
+    </profileApplication>
+  </uml:Model>
+  <Blocks:Block xmi:id="_VbeGYLHoEeiL9tKfQ31fIA" base_Class="_ValVkLHoEeiL9tKfQ31fIA"/>
+  <tomasys:Function xmi:id="_c-cIkLHoEeiL9tKfQ31fIA" base_Class="_ValVkLHoEeiL9tKfQ31fIA"/>
+  <Blocks:Block xmi:id="_iZSnsLHoEeiL9tKfQ31fIA" base_Class="_iZKr4LHoEeiL9tKfQ31fIA"/>
+  <tomasys:Function xmi:id="_m5byELHoEeiL9tKfQ31fIA" base_Class="_iZKr4LHoEeiL9tKfQ31fIA"/>
+  <Blocks:Block xmi:id="_sNfssLHoEeiL9tKfQ31fIA" base_Class="_sNZmELHoEeiL9tKfQ31fIA"/>
+  <Blocks:Block xmi:id="_vw468LHoEeiL9tKfQ31fIA" base_Class="_vwzbYLHoEeiL9tKfQ31fIA"/>
+  <Blocks:Block xmi:id="_xLt6MLHoEeiL9tKfQ31fIA" base_Class="_xLpBsLHoEeiL9tKfQ31fIA"/>
+  <Blocks:Block xmi:id="_z_IdALHoEeiL9tKfQ31fIA" base_Class="_z_AhMLHoEeiL9tKfQ31fIA"/>
+  <Blocks:Block xmi:id="_5AalkLHoEeiL9tKfQ31fIA" base_Class="_5AT34LHoEeiL9tKfQ31fIA"/>
+  <Blocks:Block xmi:id="_7WQbkLHoEeiL9tKfQ31fIA" base_Class="_7WK8ALHoEeiL9tKfQ31fIA"/>
+  <tomasys:Function xmi:id="_F47wILHpEeiL9tKfQ31fIA" base_Class="_5AT34LHoEeiL9tKfQ31fIA"/>
+  <tomasys:FunctionDesign xmi:id="_K5kYcLHpEeiL9tKfQ31fIA" base_Class="_xLpBsLHoEeiL9tKfQ31fIA" confidence="0.9"/>
+  <tomasys:FunctionDesign xmi:id="_M32DALHpEeiL9tKfQ31fIA" base_Class="_z_AhMLHoEeiL9tKfQ31fIA"/>
+  <tomasys:FunctionDesign xmi:id="_Okd84LHpEeiL9tKfQ31fIA" base_Class="_sNZmELHoEeiL9tKfQ31fIA"/>
+  <tomasys:FunctionDesign xmi:id="_PRuEcLHpEeiL9tKfQ31fIA" base_Class="_vwzbYLHoEeiL9tKfQ31fIA"/>
+  <tomasys:FunctionDesign xmi:id="_TQ2zgLHpEeiL9tKfQ31fIA" base_Class="_7WK8ALHoEeiL9tKfQ31fIA" confidence="0.8" solved_function="_F47wILHpEeiL9tKfQ31fIA"/>
+  <Blocks:Block xmi:id="_KCoVwLaREeibmbzv24Y0uw" base_Class="_KCa6YLaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_MBlVwLaREeibmbzv24Y0uw" base_Class="_MBeBALaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_O85QULaREeibmbzv24Y0uw" base_Class="_O8zwwLaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_PxG7gLaREeibmbzv24Y0uw" base_Class="_PxA04LaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_Qduw8LaREeibmbzv24Y0uw" base_Class="_QdpRYLaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_ROYKwLaREeibmbzv24Y0uw" base_Class="_ROSrMLaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_T2Pk4LaREeibmbzv24Y0uw" base_Class="_T2KFULaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_UlHdELaREeibmbzv24Y0uw" base_Class="_UlBWcLaREeibmbzv24Y0uw"/>
+  <tomasys:ComponentClass xmi:id="_ewcooLaREeibmbzv24Y0uw" base_Class="_KCa6YLaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_2cuQsLaREeibmbzv24Y0uw" base_Class="_2cm78LaREeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_wJ_48LaSEeibmbzv24Y0uw" base_Class="_wJ5LQLaSEeibmbzv24Y0uw"/>
+  <Blocks:Block xmi:id="_y5ovALaSEeibmbzv24Y0uw" base_Class="_y5j2gLaSEeibmbzv24Y0uw"/>
+  <tomasys:ComponentSpecification xmi:id="_4_FYYLaUEeibmbzv24Y0uw" type="_fxWIILaVEeibmbzv24Y0uw" base_InstanceSpecification="_F8qUALaTEeibmbzv24Y0uw"/>
+  <tomasys:ComponentSpecification xmi:id="_BC1zcLaVEeibmbzv24Y0uw" type="_hlx6MLaVEeibmbzv24Y0uw" base_InstanceSpecification="_InuMELaTEeibmbzv24Y0uw"/>
+  <tomasys:ComponentClass xmi:id="_dAns8LaVEeibmbzv24Y0uw" base_Class="_MBeBALaREeibmbzv24Y0uw"/>
+  <tomasys:ComponentClass xmi:id="_d-nmQLaVEeibmbzv24Y0uw" base_Class="_O8zwwLaREeibmbzv24Y0uw"/>
+  <tomasys:ComponentClass xmi:id="_fGPVoLaVEeibmbzv24Y0uw" base_Class="_PxA04LaREeibmbzv24Y0uw"/>
+  <tomasys:ComponentClass xmi:id="_fxWIILaVEeibmbzv24Y0uw" base_Class="_QdpRYLaREeibmbzv24Y0uw"/>
+  <tomasys:ComponentClass xmi:id="_guBy0LaVEeibmbzv24Y0uw" base_Class="_ROSrMLaREeibmbzv24Y0uw"/>
+  <tomasys:ComponentClass xmi:id="_hlx6MLaVEeibmbzv24Y0uw" base_Class="_T2KFULaREeibmbzv24Y0uw"/>
+  <tomasys:ComponentClass xmi:id="_jIitcLaVEeibmbzv24Y0uw" base_Class="_UlBWcLaREeibmbzv24Y0uw"/>
+  <tomasys:Function xmi:id="_kmOMYLaVEeibmbzv24Y0uw" base_Class="_2cm78LaREeibmbzv24Y0uw"/>
+  <tomasys:FunctionDesign xmi:id="_owMScLaVEeibmbzv24Y0uw" base_Class="_wJ5LQLaSEeibmbzv24Y0uw" confidence="0.5" solved_function="_F47wILHpEeiL9tKfQ31fIA"/>
+  <tomasys:FunctionDesign xmi:id="_p3-Z4LaVEeibmbzv24Y0uw" base_Class="_y5j2gLaSEeibmbzv24Y0uw" confidence="1.0" solved_function="_F47wILHpEeiL9tKfQ31fIA"/>
+  <tomasys:ComponentSpecification xmi:id="_Mc8p0LaWEeibmbzv24Y0uw" type="_jIitcLaVEeibmbzv24Y0uw" base_InstanceSpecification="_IhdrsLaWEeibmbzv24Y0uw"/>
+  <tomasys:ComponentSpecification xmi:id="_PwKuELaWEeibmbzv24Y0uw" type="_guBy0LaVEeibmbzv24Y0uw" base_InstanceSpecification="_D08SMLaWEeibmbzv24Y0uw"/>
+  <tomasys:ComponentSpecification xmi:id="_0RTd0LaYEeibmbzv24Y0uw" type="_guBy0LaVEeibmbzv24Y0uw" base_InstanceSpecification="_t073ULaYEeibmbzv24Y0uw"/>
+  <tomasys:ComponentSpecification xmi:id="_1Z6rsLaYEeibmbzv24Y0uw" type="_hlx6MLaVEeibmbzv24Y0uw" base_InstanceSpecification="_GNImsLaYEeibmbzv24Y0uw"/>
+  <tomasys:ComponentSpecification xmi:id="_7P2kULaYEeibmbzv24Y0uw" type="_fxWIILaVEeibmbzv24Y0uw" base_InstanceSpecification="_CGp5gLaYEeibmbzv24Y0uw"/>
+  <tomasys:FunctionGrounding xmi:id="_TQOlYLafEeibmbzv24Y0uw" type="_TQ2zgLHpEeiL9tKfQ31fIA" realised_objective="_aZu-sLafEeibmbzv24Y0uw" status="true" performance_delivered="0.8" base_InstanceSpecification="_NQt6ALafEeibmbzv24Y0uw"/>
+  <tomasys:Objective xmi:id="_aZu-sLafEeibmbzv24Y0uw" base_InstanceSpecification="_Tlr4ALafEeibmbzv24Y0uw"/>
+  <tomasys:ComponentInstance xmi:id="_pWuicLafEeibmbzv24Y0uw" base_InstanceSpecification="_i2B1kLafEeibmbzv24Y0uw"/>
+  <tomasys:ComponentInstance xmi:id="_rMa4wLafEeibmbzv24Y0uw" base_InstanceSpecification="_kjFNQLafEeibmbzv24Y0uw"/>
+  <tomasys:ComponentInstance xmi:id="_sABf8LafEeibmbzv24Y0uw" base_InstanceSpecification="_lh9QULafEeibmbzv24Y0uw" type="_hlx6MLaVEeibmbzv24Y0uw"/>
+  <tomasys:role xmi:id="_I0gt8LqQEeiJqsn3UpdfJg" base_Property="_KiIqMLqMEeiJqsn3UpdfJg"/>
+  <tomasys:role xmi:id="_KA3zYLqQEeiJqsn3UpdfJg" base_Property="_7bAdkLqMEeiJqsn3UpdfJg"/>
+  <ModelElements:Rationale xmi:id="_c40uML_dEeiRmt3s1nZ51w" base_Comment="_c4syYL_dEeiRmt3s1nZ51w"/>
+  <ModelElements:Rationale xmi:id="_Q6gsoL_eEeiRmt3s1nZ51w" base_Comment="_Q6amAL_eEeiRmt3s1nZ51w"/>
+  <ModelElements:Rationale xmi:id="_8-ueML_eEeiRmt3s1nZ51w" base_Comment="_8-plsL_eEeiRmt3s1nZ51w"/>
+  <tomasys:role xmi:id="_hOAOoL_xEeiRmt3s1nZ51w" base_Property="_-c2j4L_wEeiRmt3s1nZ51w"/>
+  <tomasys:role xmi:id="_icjFYL_xEeiRmt3s1nZ51w" base_Property="_NJrksL_xEeiRmt3s1nZ51w"/>
+  <tomasys:role xmi:id="_TLJ3kL_0EeiRmt3s1nZ51w" base_Property="_hL-Y4L_yEeiRmt3s1nZ51w"/>
+  <tomasys:role xmi:id="_Ua0IoL_0EeiRmt3s1nZ51w" base_Property="_dJrBEL_yEeiRmt3s1nZ51w"/>
+  <tomasys:role xmi:id="_Vcx78L_0EeiRmt3s1nZ51w" base_Property="_7JDwgL_zEeiRmt3s1nZ51w"/>
+</xmi:XMI>
