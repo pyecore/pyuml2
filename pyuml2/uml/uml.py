@@ -3038,7 +3038,7 @@ class TimeConstraint(_user_module.TimeConstraintMixin, IntervalConstraint):
     """A TimeConstraint is a Constraint that refers to a TimeInterval.
 <p>From package UML::Values.</p>"""
     firstEvent = EAttribute(eType=Boolean, derived=False,
-                            changeable=True, default_value='true')
+                            changeable=True, default_value=True)
 
     def __init__(self, firstEvent=None, **kwargs):
 
