@@ -13,7 +13,7 @@ PyUML2: A Pythonic Implementation of the UML Metamodel
 .. |license| image:: https://img.shields.io/badge/license-New%20BSD-blue.svg
     :target: https://raw.githubusercontent.com/pyecore/pyuml2/master/LICENSE
 
-PyUML2 is the implementation of the UML2 metamodel for Python 2.7, >=3.4,
+PyUML2 is the implementation of the UML2 metamodel for Python >= 3.5,
 relying on PyEcore. The goal of this project is to provide an almost-full
 implementation of the UML-2.5 standard in Python with Profile supports and
 compatibility with the Eclipse UML2 project.
