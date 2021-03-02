@@ -13,9 +13,9 @@ PyUML2: A Pythonic Implementation of the UML Metamodel
 .. |license| image:: https://img.shields.io/badge/license-New%20BSD-blue.svg
     :target: https://raw.githubusercontent.com/pyecore/pyuml2/master/LICENSE
 
-PyUML2 is the implementation of the UML2 metamodel for Python 2.7, >=3.4,
+PyUML2 is an implementation of the UML2 metamodel for Python 2.7, >=3.4,
 relying on PyEcore. The goal of this project is to provide an almost-full
-implementation of the UML-2.5 standard in Python with Profile supports and
+implementation of the UML-2.5 standard in Python with Profile support and
 compatibility with the Eclipse UML2 project.
 
 
@@ -31,7 +31,7 @@ There is not yet a pypi package, you can manually install the project using:
 Documentation
 =============
 
-Here is how to currently load a UML2 model using the implementation.
+Here is how to load a UML2 model using the implementation.
 
 .. code-block:: python
 
@@ -74,12 +74,12 @@ Liberties Regarding the Eclipse implementation
 ==============================================
 
 The project goal is to be compatible with the Eclipse UML implementation, but it
-still take some liberties:
+still takes some liberties:
 
-* the Eclipse implementation pluralize the name of features when required during
+* the Eclipse implementation pluralizes the name of features when required during
   the code generation. For example, the ``packagedElement`` on ``Package`` in
   the ``UML.ecore`` metamodel is singular, but the code Eclipse Implementation
-  pluralize it as ``packagedElements``. PyUML2 does not perform this
+  pluralizes it as ``packagedElements``. PyUML2 does not perform this
   pluralization (at least not now).
 
 Tests
@@ -96,10 +96,10 @@ Contributing
 
 All contributions are welcome and are really appreciated. The project is brand
 new so there is a currently a lot to do. If you want to add the implementation
-of new derived features or method implementation, the blueprint of each method
+of new derived features or method implementations, the blueprint of each method
 and feature is located in the ``pyuml2/uml_mixins.py`` module and can be filled.
 
-There is some examples that can help you tame the code and how to add a
+There are some examples that can help you tame the code and show how to add a
 dedicated implementation. The more representative are:
 
 * the ``isComposite`` methods in the ``PropertyMixin`` class for "non-many" feature
